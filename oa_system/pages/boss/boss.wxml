@@ -1,0 +1,79 @@
+<!--pages/boss/boss.wxml-->
+
+<view class="boss">
+    <view class="header">
+        <text>公司名和公司真实地址需要同步才能生成贵公司唯一的二维码供打卡使用。</text>
+    </view>
+    
+    <view class="company">
+        <view class="company-name" bindtap="toCompanyName">
+            <text>公司</text>
+            <view class="company-name-right">
+                <text>{{company.name}}</text>
+                <view class="arrow"></view>
+            </view>
+        </view>
+        <view class="company-location" bindtap="toLocation">
+            <text>定位</text>
+            <view class="company-location-right">
+                <text>{{company.address}}</text>
+                <view class="arrow"></view>
+            </view>
+        </view>
+    </view>
+
+    <view class="low"></view>
+
+    <view class="attendance">
+        <view class="attendance-item">
+            <text>考勤时间</text>
+            <view class="start-time-am">
+                <picker mode="time" value="{{AMstart}}" data-time="AMstart" start="00:00" end="23:59" bindchange="bindTimeChange">
+                    {{AMstart}}
+                </picker>
+            </view>
+            <view>-</view>
+            <view class="end-time-am">
+                <picker mode="time" value="{{AMend}}" data-time="AMend" start="00:00" end="23:59" bindchange="bindTimeChange">
+                    {{AMend}}
+                </picker>
+            </view>
+        </view>
+        <view class="attendance-item">
+            <text>考勤时间</text>
+            <view class="start-time-pm">
+                <picker mode="time" value="{{PMstart}}" data-time="PMstart" start="00:00" end="23:59" bindchange="bindTimeChange">
+                    {{PMstart}}
+                </picker>
+            </view>
+            <view>-</view>
+            <view class="end-time-pm">
+                <picker mode="time" value="{{PMend}}" data-time="PMend" start="00:00" end="23:59" bindchange="bindTimeChange">
+                    {{PMend}}
+                </picker>
+            </view>
+        </view>
+        <view class="button" bindtap="saveCommuterTime">
+            <text>保存</text>
+        </view>
+    </view>
+    <view class="low-2"></view>
+
+    <view class="code" bindtap="getQRCode">
+        <text>生成二维码</text>
+        <view class="code-right">
+            <image src="/images/icons/code.png"></image>
+            <view class="arrow"></view>
+        </view>
+    </view>
+    <view class="list" bindtap="toApplyList">
+        <text>申请列表</text>
+        <view class="arrow"></view>
+    </view>
+    <view class="low-3"></view>
+    <view class="dissolve" bindtap="dissolveCompany">
+        <view>解散企业</view>
+        <view class="arrow"></view>
+    </view>
+
+</view>

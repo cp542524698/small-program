@@ -1,0 +1,20 @@
+/* pages/name/name.wxss */
+
+.name {
+    /*background: red;*/
+    /*margin-top: 40rpx; */
+    margin: 40rpx 40rpx 20rpx 20rpx ; 
+    height: 80rpx;
+    font-size: 17px; 
+    /*border-bottom: 1px solid #eee; */
+}
+
+.name input {
+    border-bottom: 1px solid greenyellow;
+    padding-left: 20rpx; 
+}
+
+.name button {
+    width: 40%;
+    margin-top: 40rpx;
+}

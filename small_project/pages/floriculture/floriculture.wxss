@@ -1,0 +1,140 @@
+.category_01 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 90rpx;
+  text-align:center;
+  background-color: #F0F0F0; 
+}
+
+.category_02 {  
+    text-align:center;
+    width: 95%;
+    border-radius: 100px;
+    background-color: white;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10px;
+}
+
+.index_01{
+  display: flex; 
+  justify-content: flex-start; 
+  flex-direction: row;
+  align-items: fstretch;
+  align-content: stretch;
+  flex-wrap: wrap;
+  background-color:white;
+  width: 100%;
+  height: 80rpx;
+}
+
+.index_02{
+  display: flex; 
+  justify-content: flex-start; 
+  flex-direction: row;
+  align-items: fstretch;
+  align-content: stretch;
+  flex-wrap: wrap;
+  background-color:white;
+  width: 100%;
+  height: 80rpx;
+}
+
+.flower_item {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    background-color:white;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+.flower_pic {
+    width: 100%;
+    height: 320rpx;
+    padding-bottom: 10rpx;
+}
+
+.menu_item {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 26rpx;
+    box-sizing: border-box;
+    background-color:white;
+}
+
+.line {
+  height: 38rpx;
+  width: 30%;
+  border-bottom: solid black 5rpx;
+}
+
+.noline{
+  height: 38rpx;
+  width: 30%;
+}
+.menu_name {
+  font-size: 28rpx;
+  width: 46%;
+  /*text-decoration:underline;*/
+  /*border-bottom: 2rpx black solid;
+  border: red solid 1rpx;*/
+}
+
+
+.category_03 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 60px;
+}
+.category_04 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-left:25%;
+  margin-top: 10px;
+}
+
+.category_05 {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border: 1px solid red;
+  height: 230px;
+  width:200rpx;
+}
+
+
+.index_02{
+  display: flex; 
+  justify-content: flex-start; 
+  flex-direction: row;
+  align-items: fstretch;
+  align-content: stretch;
+  flex-wrap: wrap;
+  background-color:#EBEBEB;
+  width: 20rem;
+  height: 100%;
+}
+.item:nth-child(2n+0) {
+  display: flex;
+  flex-wrap: wrap; 
+  width: 50%;
+  height: 300rpx;
+}
+
+.item:nth-child(2n+1) {
+  display: flex;
+  flex-wrap: nowrap; 
+  width: 50%;
+  height: 300rpx;
+}

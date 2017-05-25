@@ -1,0 +1,14 @@
+/* pages/select/select.wxss */
+
+.select {
+    display: flex;
+    height: 400px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.select button{
+    margin: 10px 0;
+}

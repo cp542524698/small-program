@@ -1,0 +1,6 @@
+<!--pages/select/select.wxml-->
+
+<view class="select">
+    <button type="primary" size="mini" bindtap="handleCreateBtn">创建团队</button>
+    <button type="default" size="mini" bindtap="handleJoinBtn">加入团队</button>
+</view>

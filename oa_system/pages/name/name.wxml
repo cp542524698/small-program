@@ -1,0 +1,7 @@
+<!--pages/name/name.wxml-->
+
+
+<view class="name">
+    <input type="text" value="{{originName}}" bindinput="bindInputOnchange" auto-focus/>
+    <button type="primary" size="mini" bindtap="bindChangeNameBtn">保存</button>
+</view>

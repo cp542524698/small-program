@@ -1,0 +1,84 @@
+.create {
+    height: 100%;
+    /*background: #eee;*/
+}
+
+.header {
+    height: 100rpx;
+    background: #eee;
+    font-size: 14px;
+    padding-left: 40rpx;
+    color: #888888;
+    line-height: 100rpx;
+}
+
+.company {
+    /*background: blue;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    height: 88rpx;
+    margin-left: 20rpx;
+    box-sizing: border-box;
+    font-size: 17px;
+    line-height: 24px;
+}
+
+.company input {
+    /*background: lightgoldenrodyellow;*/
+    padding-left: 32rpx;
+    font-size: 17px; 
+    flex: 1
+}
+.company icon{
+    /*background: fuchsia;*/
+    margin-right: 20rpx;
+    height: 24px;
+}
+.location {
+    padding-right: 90rpx; 
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    height: 88rpx;
+    margin-left: 20rpx;
+    box-sizing: border-box;
+    font-size: 17px;
+    line-height: 24px;    
+}
+.address {
+    padding-left: 20rpx;
+    flex: 1;
+    color: #b2b2b2;
+}
+
+.arrow {
+    border-top: 2px solid #c7c7c7;
+    border-right: 2px solid #c7c7c7;
+    width: 10px;
+    height: 10px;
+    transform: rotate(45deg);
+}
+
+.error {
+    padding: 20rpx;
+    font-size: 14px;
+    color: red;
+}
+
+.button {
+    margin: 334rpx 40rpx;
+}
+
+.default-button {
+    background-color: #22a1e0;
+}
+
+.hover {
+    background-color: #22a1e0;
+    opacity: 0.7;
+}

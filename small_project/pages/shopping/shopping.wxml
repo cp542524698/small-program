@@ -1,0 +1,112 @@
+
+<!--pages/shopping/shopping.wxml-->
+<view class="container">
+  <view>
+    <image class="index_01" src="{{piccurl}}"></image>
+    <text style="font-size:30rpx; margin-top: 10rpx">{{cart.Name}}.{{cart.Desc}}</text>
+    <view style="font-size:40rpx; font-weight:bold; margin-top: 10rpx; margin-bottom: 15rpx">
+      <text style="color:#F00">￥ {{cart.Price}}</text>
+    </view>
+    <view>
+      <text style="font-size:27rpx; color:#D3D3D3">库存：</text>
+      <text style="font-size: 27rpx">{{cart.Count}} </text>
+    </view>
+    <view>
+      <text style="font-size:27rpx; color:#D3D3D3">运费：</text>
+      <text style="font-size: 27rpx; margin-bottom: 15rpx"> 免运费 </text>
+    </view>
+    <view class="line"> </view>
+    <view style="font-size:28rpx; margin-top:10rpx">
+      <text> 宝贝评价: </text>
+    </view>
+    <view style="font-size:27rpx; margin-top:10rpx; margin-bottom:50rpx">
+      <text style="background-color:green;margin-left:40rpx"> 有图() </text>
+      <text style="background-color:green;margin-left:40rpx"> 好评() </text>
+      <text style="background-color:yellow;margin-left:40rpx"> 中评() </text>
+      <text style="background-color:red;margin-left:40rpx"> 差评() </text>
+    </view>
+    <view class="line"> </view>
+
+    <!-- 测试 用例-->
+    <image class="detail" src="{{detailurl}}"></image>
+  </view>
+</view>
+<view class="win">
+  <button class="buy" type="primary" bindtap="show">立即购买</button>
+  <button class="add" type="primary" bindtap="addcar">加入购物车</button>
+</view>
+
+<view class="showall">
+  <image class="order" src="{{base_url}}order.png" bindtap="showorder" > </image>
+  <image class="order" src="{{base_url}}shopping_car.png"  bindtap="showcar"> </image>
+</view>
+
+<view class="{{showView?'addcar_hide':'addcar_show'}}" >
+   <view class="desc">
+      <image class="userinfo-avatar" src="{{sampleurl}}" background-size="cover"></image>     
+      <text class="name"> {{cart.Name}}.{{cart.Desc}}</text>
+      <text class="price" style="color:#F00">￥{{cart.Price}} </text> 
+      <text class="exit" type="primary" bindtap="exit_buy"> × </text>
+  </view>
+  <view class="desc">
+         <text class="countshow">库存: {{cart.Count}}</text>      
+          <!-- Stepper容器 -->
+          <view class="stepper">
+            <!-- 减号 -->
+            <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+            <!-- 数值 -->
+            <input style="height:10rpx" type="number" value="{{num}}"  />
+            <!-- 加号 -->
+            <text class="{{maxusStatus}}" bindtap="bindMaxus">+</text>
+          </view>
+  </view>
+  <view class="desc">
+      <button class="addto" type="primary" bindtap="nextstep" >下一步</button>
+  </view>
+</view>
+ 
+<view class="{{showcar?'addcar_hide':'addcar_show'}}" >
+  <view class="desc">
+      <image class="userinfo-avatar" src="{{sampleurl}}" background-size="cover"></image>     
+      <text class="name"> {{cart.Name}}.{{cart.Desc}}</text>
+      <text class="price" style="color:#F00">￥{{cart.Price}} </text> 
+      <text class="exit" type="primary" bindtap="exit_buy"> × </text>
+  </view>
+  <view class="desc">
+         <text class="countshow">库存: {{cart.Count}}</text>      
+          <!-- Stepper容器 -->
+          <view class="stepper">
+            <!-- 减号 -->
+            <text class="{{minusStatus}}" bindtap="bindMinus">-</text>
+            <!-- 数值 -->
+            <input style="height:10rpx" type="number" value="{{num}}"  />
+            <!-- 加号 -->
+            <text class="{{maxusStatus}}"  bindtap="bindMaxus">+</text>
+          </view>
+  </view>
+  <view class="desc">
+      <button class="addto" type="primary" bindtap="listenButton">加入购物车</button>
+      <toast hidden="{{hiddenToast}}" duration="1000" bindchange="toastHidden"> {{toast}} </toast>
+  </view>
+</view>
+
+<view class="{{showView2?'hide':'show'}}" >
+    <form bindsubmit="buynow">
+    <view class="manage">
+        <text>姓    名:</text>
+        <input name="name" placeholder="{{name}}"></input>
+        <text style="margin-left: 170rpx" type="primary" bindtap="exit_commit"> × </text>
+    </view>
+    <view class="manage">
+        <text>手机号码:</text>
+        <input name="tel" placeholder="{{tel}}" maxlength="11"> </input>
+    </view>
+    <view class="manage">
+        <text>收货地址:</text>
+        <input name="address" placeholder="{{address}}"> </input>
+    </view>
+    <view class="manage">
+        <button class="butt"  formType="submit">提交订单</button>
+    </view>
+    </form>
+</view>

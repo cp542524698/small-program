@@ -1,0 +1,7 @@
+<!--pages/login/login.wxml-->
+
+
+<view class="login">
+    <button type="default" size="mini" bindtap="handleLoginBtn">微信登录</button>
+</view>
+

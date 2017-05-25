@@ -1,0 +1,13 @@
+<view  class="container" >      
+    <image class="index_01"  src="{{send00}}" ></image>     
+    <view class="index_02">   
+        <view class="flower_item" wx:for="{{carts}}" wx:for-item="name" wx:for-index="id">
+            <image class="flower_pic" src="{{name.image}}" > </image>
+                <text style="font-size:25rpx" > {{name.desc}}</text>
+            <view style="font-size:30rpx">
+                <text style="color:#F00">￥{{name.price}}</text>     
+                <text style="margin-left:20rpx">销量：{{name.count}} </text>   
+            </view>
+        </view>
+    </view>
+</view>

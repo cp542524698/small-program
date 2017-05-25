@@ -1,0 +1,71 @@
+<!--index.wxml-->
+<view class="container carts-list">
+  <view wx:for="{{carts}}" class="carts-item" data-title="{{item.name}}.{{item.desc}}"  bindtap="bindViewTap">
+     <!-- 复选框图标 -->
+        <icon wx:if="{{item.selected}}" type="success_circle" size="20" bindtap="bindCheckbox" data-index="{{index}}"/>
+        <icon wx:else type="circle" size="20" bindtap="bindCheckbox" data-index="{{index}}"/>
+    <view>
+     <image class="carts-image" src="https://cephcp.ztgame.com.cn/flower_{{item.Goodid}}.jpg" mode="aspectFill"/>
+    </view>
+   <view class="carts-text">
+    <text class="carts-title">{{item.Name}}.{{item.Desc}}</text>
+    <view class="carts-subtitle">
+    <text class="carts-price">{{item.Price}}</text>
+    <view class="stepper">
+       <!-- 减号 -->
+       <text class="normal" data-index="{{index}}" bindtap="bindMinus">-</text>
+       <!-- 数值 -->
+       <input type="number" bindchange="bindManual" value="{{item.Many}}" />
+       <!-- 加号 -->
+       <text class="normal" data-index="{{index}}" bindtap="bindPlus">+</text>
+      </view>
+    </view>
+   </view>
+  </view>
+</view>
+
+    <view class="carts-footer">
+        <view bindtap="bindSelectAll">
+            <icon wx:if="{{selectedAllStatus}}" type="success_circle" size="20"/>
+            <icon wx:else type="circle" size="20" />
+            <text>全选</text>
+            <text class="carts-price">{{total}}</text>
+        </view>
+        <view class="button" bindtap="bindCheckout">>立即结算</view>
+    </view>
+
+<toast hidden="{{toastHidden}}" duration="1000" bindchange="bindToastChange">
+    {{toastStr}}
+</toast>
+
+
+<view class="{{showView?'hide':'show'}}" >
+    <form bindsubmit="formSubmit">
+    <view class="manage">
+        <text>姓    名:</text>
+        <input name="name" placeholder="{{name}}"></input>
+    </view>
+    <view class="manage">
+        <text>手机号码:</text>
+        <input name="tel" placeholder="{{tel}}" maxlength="11"> </input>
+    </view>
+    <view class="manage">
+        <text>收货地址:</text>
+        <input name="address" placeholder="{{address}}"> </input>
+    </view>
+    <view class="manage">
+        <button class="butt"  formType="submit">提交订单</button>
+    </view>
+    </form>
+</view>
+
+<view class="{{showView2?'del_hide':'del_show'}}">
+  <text class="delword">此商品最小购买数量为1，是否删除该商品</text>
+  <view class="but">
+  <button class="delok" type="primary"  bindtap="sureDel">确认删除</button>
+  <button class="delno" type="primary"  bindtap="Del">取消删除</button>
+  </view>
+</view>
+
+
+

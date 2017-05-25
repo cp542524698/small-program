@@ -1,0 +1,7 @@
+<!--pages/self/self.wxml-->
+
+
+<view class="self">
+    <text>此时，看到的是你个人的打卡信息！</text>
+    <button type="warn" bindtap="handleQuit">退出所在公司</button>
+</view>

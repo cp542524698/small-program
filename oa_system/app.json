@@ -1,0 +1,39 @@
+{
+  "pages":[
+
+    "pages/login/login",
+    "pages/select/select",
+    "pages/create/create",
+    "pages/list/list",
+    "pages/confirm/confirm",
+    "pages/audit/audit",
+    "pages/workers/workers",
+    "pages/boss/boss",
+    "pages/name/name",
+    "pages/qrcode/qrcode",
+    "pages/scan/scan",
+    "pages/self/self",
+    "pages/applylist/applylist",
+    "pages/unAuth/unAuth"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/workers/workers",
+      "text": "员工",
+      "iconPath": "images/tarbar/home.png",
+      "selectedIconPath": "images/tarbar/homeHL.png"
+    },{
+      "pagePath": "pages/boss/boss",
+      "text": "管理",
+      "iconPath": "images/tarbar/home.png",
+      "selectedIconPath": "images/tarbar/homeHL.png"
+    }]
+  },
+  "debug": true
+}

@@ -1,0 +1,9 @@
+<import src="../../template/workers-item.wxml" />
+<view class="vLine"></view>
+<picker class="pWorkers-item" mode="date" value="{{date}}" start="2012-09-01" end="2018-09-01" bindchange="dataChange">
+  <view class="vDate">
+    <text>{{date}}</text>
+<image class="iGoIcon"src="/images/icons/go.png" mode="aspectFit"></image>
+  </view>
+</picker>
+<template wx:for="{{lists}}" is="workers-item" data="{{item}}" />

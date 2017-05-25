@@ -1,0 +1,53 @@
+<view class="container">
+  <!--
+    <view class="category_01">
+        <input bindinput="bindKeyInput" maxlength="10" class="category_02" type="text" placeholder-style="color: black" placeholder="请输入搜索内容" auto-focus />
+    </view>
+    -->
+  <view class="index_01">
+    <view class="menu_item" wx:for="{{menu}}" wx:for-item="menu" wx:for-index="id">
+      <view wx:if="{{selected==id}}" class="line">
+        <text class="menu_name" id="{{id}}" bindtap="tapName">{{menu.name}}</text>
+      </view>
+      <view wx:else class="noline">
+        <text class="menu_name" id="{{id}}" bindtap="tapName">{{menu.name}}</text>
+      </view>
+      <!--
+      <text class="menu_name" id="{{id}}" bindtap="tapName">{{menu.name}}</text>
+      <canvas canvas-id="{{id}}" style="width: 60%;height: 20rpx;" />
+      -->
+    </view>
+  </view>
+
+  <view class="index_02">
+    <view class="flower_item" wx:for="{{carts}}" wx:for-item="name" wx:for-index="id" id="{{name.Id}}" type="primary" bindtap="jumpbuy">
+      <image class="flower_pic" src="https://cephcp.ztgame.com.cn/flower_{{name.Id}}.jpg"> </image>
+      <text style="font-size:25rpx"> {{name.Name}}.{{name.Desc}}</text>
+      <view style="font-size:30rpx">
+        <text style="color:#F00">￥{{name.Price}}</text>
+        <text style="margin-left:20rpx">销量：{{name.Count}} </text>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!--
+<swiper>
+    <block wx:for-3s="{{imageArray}}">
+        <swiper-item >
+            <image src="{{item}}" height="150" width="355" bindtap="test"></image>
+        </swiper-item>
+    </block>
+</swiper>
+
+
+<view bindtap="test" class="index_01" >
+  <image id="imgs" class="index_01"  src="/image/index_01.png"></image>
+</view>
+
+
+<view id="tapTest" data-hi="MINA" bindtap="tapName" class="index_01">
+    <image id="imgs" class="index_01"  src="/image/index_01.png"></image>
+</view>
+-->

@@ -1,0 +1,68 @@
+/* pages/applylist/applylist.wxss */
+
+.applylist {
+
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+    height: 110rpx;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 42rpx 36rpx 20rpx 40rpx;
+    box-sizing: border-box;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.avatar {
+
+}
+
+.avatar image {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+}
+
+
+.name {
+    margin-left: 20rpx;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.refuse {
+    width: 120rpx;
+    height: 52rpx;
+    border-radius: 5px;
+    border: solid 1px rgba(0, 0, 0, 0.12);
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 52rpx;
+    color: rgba(0, 0, 0, 0.54);
+    text-align: center;
+    margin-right: 22rpx;
+}
+
+.accept {
+    width: 120rpx;
+    height: 52rpx;
+    border-radius: 5px;
+    border: solid 1px rgba(0, 0, 0, 0.12);
+    background-color: #22a1e0;
+    font-size: 14px;
+    line-height: 52rpx;
+    color: #fff;
+    text-align: center;
+}

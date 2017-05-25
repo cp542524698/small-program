@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<view class="container">
+  <!--
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  
+
+  <view bindtap="click">
+  
+  </view>
+  <view > 
+    <image id="" style="width:50%" src="/image/send.png"></image>
+  </view>
+-->
+<swiper indicator-dots="true" autoplay="true" duration="1000" bindchange="listenSwiper" class="index_01" >
+  <swiper-item>
+      <image id="imgs" class="index_01"  src="{{base_url}}index_01.png" ></image>
+  </swiper-item>
+  <swiper-item>
+      <image id="imgs" class="index_01"  src="{{base_url}}index_02.png" ></image>
+  </swiper-item>
+</swiper>
+
+
+<view class="index_02">
+  <!--
+  <image id="send_01" class="item" src="{{base_url}}send_01.png"  mode="scaleToFill" type="primary" bindtap="send_01"></image>
+  <image class="item" src="{{base_url}}send_02.png"  mode="scaleToFill" type="primary" bindtap="scale"></image>
+  <image class="item" src="{{base_url}}send_03.png"  mode="scaleToFill" type="primary" bindtap="scale_card"></image>
+  -->
+  <image id="send_01" class="item" src="{{base_url}}send_01.png"  mode="scaleToFill" type="primary"></image>
+  <image class="item" src="{{base_url}}send_02.png"  mode="scaleToFill" type="primary" ></image>
+  <image class="item" src="{{base_url}}send_03.png"  mode="scaleToFill" type="primary" ></image>
+
+</view>
+<view class="index_03">
+<image id="7" class="index_04" src="{{base_url}}index_rose.png" mode="scaleToFill" type="primary" bindtap="index_rose"></image>
+</view>
+<view class="index_03">
+<image id="5" class="index_04" src="{{base_url}}index_hope.png" mode="scaleToFill" type="primary" bindtap="index_rose"></image>
+</view>
+<view class="index_03">
+<image id="4" class="index_04" src="{{base_url}}index_spring.png" mode="scaleToFill" type="primary" bindtap="index_rose"></image>
+</view>
+<view class="index_03">
+<image id="3" class="index_04" src="{{base_url}}index_spring2.png" mode="scaleToFill" type="primary" bindtap="index_rose"></image>
+</view>
+
+<!--
+<view>
+  <ul style="width:100%;height:100%" >
+           <li style="float:left; width:50%;height:100%"><image sytle="width:100%;height:100%" src="/image/send_01.png" mode='aspectFit' ></image> </li>
+           <li style="float:left;width:50%;height:50%"><image  mode="aspectFit" src="/image/send_02.png"></image> </li>
+           <li style="float:left;width:50%;height:50%"><image  mode="aspectFit"  src="/image/send_03.png"></image> </li>         
+  </ul>
+</view>
+-->
+</view>

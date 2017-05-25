@@ -1,0 +1,74 @@
+<view  class="container">   
+    <view type="primary" bindtap="login"  class="{{hasLogin?'loginmy':'my'}}"  style="background-size:100%">
+        <view class="userinfo"> 
+            <toast hidden="{{hiddenToast}}" duration="1000" bindchange="toastHidden"> 已添加到购物车 </toast>   
+            <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </view>
+    </view>
+
+    <view class="manage" type="primary" bindtap="show_address">
+         <image class="pic" src="{{base_url}}address.png" > </image>
+         <view>
+            <text class="word">收货地址 </text>
+         </view>     
+    </view>
+    <view class="line"></view>
+
+    <view class="manage" type="primary" bindtap="show_order">
+         <image class="pic" src="{{base_url}}order.png" > </image>
+         <view>
+            <text class="word">我的订单 </text>
+         </view>     
+    </view>
+    <view class="line"></view>
+    
+    <view class="manage" type="primary" bindtap="show_car">
+         <image class="pic" src="{{base_url}}shopping_car.png" > </image>
+         <view>
+            <text class="word" >购物车 </text>
+         </view>     
+    </view>
+    <view class="line"></view>
+
+    <view class="manage">
+         <image class="pic" src="{{base_url}}huiyuanka.png" > </image>
+         <view>
+            <text class="word">会员卡 </text>
+         </view>     
+    </view>
+    <view class="line"></view>
+
+    <view class="manage">
+         <image class="pic" src="{{base_url}}youhuiquan.png" > </image>
+         <view>
+            <text class="word">优惠券 </text>
+         </view>     
+    </view>
+    <view class="line"></view>
+    <toast hidden="{{hiddenToast}}" duration="1000" bindchange="toastHidden">{{toastStr}} </toast>  
+
+    <view class="{{showView?'hide':'show'}}" >
+    <form bindsubmit="formSubmit">
+    <view class="manage2">
+        <text>姓    名:</text>
+        <input name="name" placeholder="{{name}}"></input>
+    </view>
+    <view class="manage2">
+        <text>手机号码:</text>
+        <input name="tel" placeholder="{{tel}}" maxlength="11"> </input>
+    </view>
+    <view class="manage2">
+        <text>收货地址:</text>
+        <input name="address" placeholder="{{address}}"> </input>
+    </view>
+    <view class="manage2">
+        <button class="butt"  formType="submit">保存</button>
+    </view>
+    </form>
+</view>
+
+
+</view>
+
+

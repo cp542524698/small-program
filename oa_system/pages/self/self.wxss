@@ -1,0 +1,6 @@
+/* pages/self/self.wxss */
+
+.self button {
+    margin-top: 400rpx; 
+    width: 80%;
+}

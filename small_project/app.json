@@ -1,0 +1,61 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/floriculture/floriculture",
+    "pages/gardening/gardening",
+    "pages/course/course",
+    "pages/my/my",
+    "pages/send/send",
+    "pages/shopping/shopping",
+    "pages/car/car",
+    "pages/logs/logs",
+    "pages/showorder/showorder",
+    "image"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "稣予的花园",
+    "navigationBarTextStyle":"black",
+    "backgroundColor": "#FFFFFF",  
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "backgroundColor": "#FFFFFF",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "image/rose.png",
+      "selectedIconPath": "image/rose.png"
+    },{
+      "pagePath":"pages/floriculture/floriculture",
+      "text":"花艺生活",
+      "iconPath": "image/cate.png",
+      "selectedIconPath": "image/cate.png"
+    },{
+      "pagePath":"pages/gardening/gardening",
+      "text":"健康生活",
+      "iconPath": "image/cate.png",
+      "selectedIconPath": "image/cate.png"
+    },{
+      "pagePath":"pages/course/course",
+      "text":"时尚生活",
+      "iconPath": "image/cate.png",
+      "selectedIconPath": "image/cate.png"
+    },{
+      "pagePath":"pages/my/my",
+      "text":"我的",
+      "iconPath": "image/my_tar.png",
+      "selectedIconPath": "image/my_tar.png"
+    }],
+    "borderStyle": "white",
+    "backgroundColor": "white"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}
