@@ -57,10 +57,11 @@ Page({
 
   //创建公司
   createCompany: function() {
-    var apiUrl = Api.company + this.data.token
+    var apiUrl = Api.company
     wx.request({
       url: apiUrl,
       data: {
+        token: this.data.token,
         name: this.data.name,
         address: this.data.location.name,
         latitude: this.data.location.latitude,

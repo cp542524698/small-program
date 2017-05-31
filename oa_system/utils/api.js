@@ -1,5 +1,4 @@
-
-var host = 'https://api.clock.newteo.com/';
+var host = 'https://cephcp.ztgame.com.cn/ztgame/';   //ztgame是变量，修改为具体的企业名称即可
 
 var session = host + 'session';
 var company = host + 'company/new?token=';

@@ -7,22 +7,8 @@ var getCode = function(callback) {
     success: function(res){
       if(res.code) {
         console.log('syslogin: ', res)
+        console.log('request id:', res.code)
         typeof callback === "function" && callback(res.code)
-        wx.request({
-          url:'https://cephcp.ztgame.com.cn/sign/login',
-          method:"POST",
-          data:"code="+res.code,
-          header:{
-            "Content-Type":"application/x-www-form-urlencoded"
-          },
-          success: function(res){
-            console.log(res.data)
-            
-          }
-
-        })
-
-
       }
       else {
         console.log('获取code失败！' + res.errMsg)
@@ -37,15 +23,16 @@ function getToken (callback) {
     wx.getUserInfo({
       success: function(res){
         console.log('用户允许授权')
+        var request = "code=" + code
         wx.request({
           url: Api.session,
           data: {
-            code: code,
-            newteo: 'b1efdafd3bbec0b7251c755859d6d9e5f073263c',
-            iv: res.iv,
-            encryptedData: res.encryptedData
+            code: request,
           },
           method: 'GET',
+          header:{
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
           success: function(res){
             typeof callback == "function" && callback(res.data)
           },
