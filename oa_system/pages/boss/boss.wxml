@@ -9,14 +9,14 @@
         <view class="company-name" bindtap="toCompanyName">
             <text>公司</text>
             <view class="company-name-right">
-                <text>{{company.name}}</text>
+                <text>{{company.Name}}</text>
                 <view class="arrow"></view>
             </view>
         </view>
         <view class="company-location" bindtap="toLocation">
             <text>定位</text>
             <view class="company-location-right">
-                <text>{{company.address}}</text>
+                <text>{{company.Address}}</text>
                 <view class="arrow"></view>
             </view>
         </view>

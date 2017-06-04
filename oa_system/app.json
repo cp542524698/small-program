@@ -23,14 +23,15 @@
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
-    "list": [{
+    "list": [
+      {
+        "pagePath": "pages/boss/boss",
+        "text": "管理",
+        "iconPath": "images/tarbar/home.png",
+        "selectedIconPath": "images/tarbar/homeHL.png"
+      },{
       "pagePath": "pages/workers/workers",
       "text": "员工",
-      "iconPath": "images/tarbar/home.png",
-      "selectedIconPath": "images/tarbar/homeHL.png"
-    },{
-      "pagePath": "pages/boss/boss",
-      "text": "管理",
       "iconPath": "images/tarbar/home.png",
       "selectedIconPath": "images/tarbar/homeHL.png"
     }]

@@ -3,88 +3,137 @@
 var Api = require('../../utils/api.js');
 
 Page({
-  data:{
+  data: {
     company: '',
-
     AMstart: '09:00',
     AMend: '12:00',
     PMstart: '14:00',
     PMend: '18:00'
 
   },
-  onLoad:function(options){
+  onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
+    console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
     this.setData({
-      id: options.id,
+      company: wx.getStorageSync('company'),
       token: wx.getStorageSync('token')
     })
   },
-  onReady:function(){
+  onReady: function () {
     // 页面渲染完成
   },
-  onShow:function(){
+  onShow: function () {
     // 页面显示
-    this.getInformation()
+    //this.getInformation()
+    this.setData({
+      company: wx.getStorageSync('company')
+    })
   },
-  onHide:function(){
+  onHide: function () {
     // 页面隐藏
   },
-  onUnload:function(){
+  onUnload: function () {
     // 页面关闭
   },
 
   //获取公司信息
-  getInformation: function() {
+  getInformation: function () {
     wx.request({
-      url: Api.information + this.data.token,
-      data: {},
-      method: 'POST', 
+      url: Api.information,
+      data: {
+        token: this.data.token
+      },
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       success: (res) => {
         // success
-        this.setData({
-          company: res.data.company,
-          AMstart: res.data.company.commutingTime[0],
-          AMend: res.data.company.commutingTime[1],
-          PMstart: res.data.company.commutingTime[2],
-          PMend: res.data.company.commutingTime[3],
-        })
+        console.log(res)
+        if (res.data.Code = 200) {
+          this.setData({
+            company: res.data.company,
+            AMstart: res.data.company.commutingTime[0],
+            AMend: res.data.company.commutingTime[1],
+            PMstart: res.data.company.commutingTime[2],
+            PMend: res.data.company.commutingTime[3],
+          })
+        }
       },
-      fail: function() {
+      fail: function () {
         // fail
       },
-      complete: function() {
+      complete: function () {
         // complete
       }
     })
   },
 
   //去修改公司名称
-  toCompanyName: function() {
+  toCompanyName: function () {
     wx.navigateTo({
-      url: '/pages/name/name?name=' + this.data.company.name,
+      url: '/pages/name/name?name=' + this.data.company.Name + '&id=' + this.data.company.Id,
     })
   },
 
   //去修改公司地理位置
-  toLocation: function() {
+  toLocation: function () {
     wx.chooseLocation({
       success: (res) => {
         // success
         wx.request({
-          url: Api.information + this.data.token,
+          url: Api.changLocation,
           data: {
+            token: this.data.token,
+            id: this.data.company.Id,
             address: res.address,
             latitude: res.latitude,
             longitude: res.longitude
           },
           method: 'POST',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
           success: (res) => {
-            this.getInformation()
-            wx.showToast({
-              title: '修改成功',
-              icon: 'success',
-              duration: 2000
-            })
+            console.log(res)
+            if (res.data.Code == 200) {
+              //this.getInformation()
+              var company = wx.getStorageSync('company')
+              company.Address= res.address
+              company.latitude = res.latitude
+              company.longitude = res.longitude
+              
+              try {
+                wx.setStorage({
+                  key: 'company',
+                  data: company,
+                  success: function (res) {
+                    //success
+                  },
+                  fail: function (res) {
+                    wx.showToast({
+                      title: '系统错误',
+                      icon: 'fail',
+                      duration: 1000
+                    })
+                  }
+                })
+              } catch (e) {
+                return
+              }
+
+              wx.showToast({
+                title: '更新地理位置成功',
+                icon: 'success',
+                duration: 2000
+              })
+            }else{
+              wx.showToast({
+                title: '更新地理位置失败，请重试',
+                icon: 'fail',
+                duration: 2000
+              })
+            }
           }
         })
       }
@@ -92,78 +141,113 @@ Page({
   },
 
   //上下班时间监听函数设置
-  bindTimeChange: function(event) {
+  bindTimeChange: function (event) {
     var value = event.detail.value
     var time = event.currentTarget.dataset.time
 
-    switch(time) {
-      case 'AMstart' : this.setData({
+    switch (time) {
+      case 'AMstart': this.setData({
         AMstart: value
       })
-      break;
-      case 'AMend' : this.setData({
-        AMend : value
+        break;
+      case 'AMend': this.setData({
+        AMend: value
       })
-      break;
-      case 'PMstart' : this.setData({
+        break;
+      case 'PMstart': this.setData({
         PMstart: value
       })
-      break;
-      case 'PMend' : this.setData({
-        PMend : value
+        break;
+      case 'PMend': this.setData({
+        PMend: value
       })
-      break;
-      default: 
+        break;
+      default:
         break;
     }
   },
 
   //保存修改的上下班时间
-  saveCommuterTime: function() {
+  saveCommuterTime: function () {
     wx.request({
-      url: Api.information + this.data.token,
+      url: Api.savetime,
       data: {
-        commutingTime: [this.data.AMstart, this.data.AMend, this.data.PMstart, this.data.PMend] 
+        token: this.data.token,
+        amstart: this.data.AMstart,
+        amend: this.data.AMend,
+        pmstart: PMstart,
+        pmend: PMend,
       },
-      method: 'POST', 
+      method: 'POST',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       success: (res) => {
         // success
         console.log(res)
-        this.getInformation()
-        wx.showToast({
-          title: '修改成功',
-          icon: 'success',
-          duration: 2000
-        })
+        if (res.data.Code == 200) {
+          var company = wx.getStorageSync('company')
+          company.Name = this.data.newName
+          try {
+            wx.setStorage({
+              key: 'company',
+              data: company,
+              success: function (res) {
+                //success
+              },
+              fail: function (res) {
+                wx.showToast({
+                  title: '系统错误',
+                  icon: 'fail',
+                  duration: 1000
+                })
+              }
+            })
+          } catch (e) {
+            return
+          }
+
+          wx.showToast({
+            title: '修改成功',
+            icon: 'success',
+            duration: 2000
+          })
+        } else {
+          wx.showToast({
+            title: '修改失败，请重试',
+            icon: 'fail',
+            duration: 10000
+          })
+        }
       }
     })
   },
 
   //生产二维码
-  getQRCode: function() {
+  getQRCode: function () {
     wx.request({
       url: Api.qrcode + this.data.token,
       data: {},
-      method: 'GET', 
+      method: 'GET',
       success: (res) => {
         wx.navigateTo({
-          url: '/pages/qrcode/qrcode?QRCodeUrl=' + res.data.QRCodeUrl 
-          + '&name=' + this.data.company.name 
-          +  '&address=' + this.data.company.address,
+          url: '/pages/qrcode/qrcode?QRCodeUrl=' + res.data.QRCodeUrl
+          + '&name=' + this.data.company.name
+          + '&address=' + this.data.company.address,
         })
       }
     })
   },
 
   //申请列表
-  toApplyList: function() {
+  toApplyList: function () {
     wx.navigateTo({
       url: '/pages/applylist/applylist',
     })
   },
 
   //解散企业
-  dissolveCompany: function() {
+  dissolveCompany: function () {
     wx.showModal({
       title: '警告',
       content: '解散企业会清空所有信息，您确定要解散企业吗？',
@@ -173,15 +257,15 @@ Page({
             url: Api.deleteCompany + this.data.token,
             data: {},
             method: 'DELETE',
-            success: function(res){
+            success: function (res) {
               // success
-              if(res.data.code == 200) {
+              if (res.data.code == 200) {
                 wx.setStorage({
                   key: 'userType',
                   data: 'user',
-                  success: function(res){
+                  success: function (res) {
                     // success
-                    wx.redirectTo({ url: '/pages/select/select'})
+                    wx.redirectTo({ url: '/pages/select/select' })
                   }
                 })
               }

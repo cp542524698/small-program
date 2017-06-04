@@ -6,12 +6,21 @@ Page({
   data:{
     name: '',
     location: '',
-    errMsg: ''
+    errMsg: '',
+    token: ''
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
-    this.setData({
-      token: wx.getStorageSync('token')
+    var that = this
+    var token
+    try {
+      token = wx.getStorageSync('token')
+    }catch(e){
+      console.log('getStorageSync token error')
+    }
+    console.log("====getStorageSync: ", token)
+    that.setData({
+      token: token
     })
   },
   onReady:function(){
@@ -58,6 +67,12 @@ Page({
   //创建公司
   createCompany: function() {
     var apiUrl = Api.company
+    var that = this
+    console.log(that.data.token)
+    console.log('========create company')
+    console.log(this.data.location.latitude)
+    console.log(this.data.location.longitude)
+
     wx.request({
       url: apiUrl,
       data: {
@@ -68,32 +83,54 @@ Page({
         longitude: this.data.location.longitude
       },
       method: 'POST', 
+      header:{
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
       success: function(res){
         console.log(res)
-        if(res.data.code == 200) {
+        console.log(res.data.Code)
+        console.log("========================================")
+        if(res.data.Code == 200) {
+          try{
+            wx.setStorage({
+              key: 'company',
+              data: res.data.data,
+              success:function(res){
+                //success
+              },
+              fail: function(res){
+                wx.showToast({
+                  title:'系统错误',
+                  icon:'fail',
+                  duration: 1000
+                })
+              }
+            })
+          }catch(e){
+            return
+          }
+
           //创建成功
-          wx.setStorageSync('userType', res.data.types)
           wx.showToast({
             title: '创建成功',
             icon: 'success',
             duration: 2000
           })
-          wx.switchTab({ url: '/pages/workers/workers' })
-        }
-        else {
+      
+          wx.switchTab({ url: '/pages/boss/boss'})
+        }else {
           //创建失败
-          if(res.data.code == 403) {
+          if(res.data.Code == 403) {
             wx.showModal({
               title: '创建失败',
               content: '你已经创建了一个公司，点击确定查看',
               success: function(res) {
                 if(res.confirm) {
-                  wx.switchTab({ url: '/pages/workers/workers' })
+                  wx.switchTab({ url: 'pages/boss/boss' })
                 }
               }
             })
-          }
-          else {
+          }else {
             wx.showModal({
               title: '创建失败',
               content: '请您稍后再试'

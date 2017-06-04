@@ -53,9 +53,7 @@ Page({
   },
   handleLoginBtn() {
     util.getToken((res) => {
-      console.log("login return -----")
       console.log(res)
-      console.log("login ret back====")
       //用户拒绝授权
       if (res.errMsg == 'userDenyed') {
         wx.redirectTo({
@@ -65,7 +63,19 @@ Page({
       //用户允许授权
       else {
         if (res.Code == 200) {
-          wx.setStorageSync('userType', res.types)
+          console.log("res", res)
+          //wx.setStorage('userType', res.types)
+          wx.setStorage({
+             key: 'userType',
+             data: res.types,
+             success: function(res){
+               console.log("setStrorage success")
+             },
+             fail: function(){
+               console.error('setStorage token failed')
+             }
+          })
+
           wx.setStorage({
             key: 'token',
             data: res.data,

@@ -57,9 +57,14 @@ Page({
 
   getStaffsList: function() {
     wx.request({
-      url: Api.staffsList + this.data.token,
-      data: {},
-      method: 'GET', 
+      url: Api.staffsList,
+      data: {
+        token: this.data.token
+      },
+      method: 'GET',
+      header:{
+        "Content-Type" : "application/x-www-form-urlencoded"
+      },
       success: (res) => {
         // success
         this.setData({

@@ -1,4 +1,3 @@
-
 var Api = require('./api.js')
 
 //获取code
@@ -7,7 +6,6 @@ var getCode = function(callback) {
     success: function(res){
       if(res.code) {
         console.log('syslogin: ', res)
-        console.log('request id:', res.code)
         typeof callback === "function" && callback(res.code)
       }
       else {
@@ -23,11 +21,11 @@ function getToken (callback) {
     wx.getUserInfo({
       success: function(res){
         console.log('用户允许授权')
-        var request = "code=" + code
+        //var request = "code=" + code
         wx.request({
           url: Api.session,
           data: {
-            code: request,
+            code: code,
           },
           method: 'GET',
           header:{

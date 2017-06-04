@@ -32,15 +32,23 @@ Page({
   },
 
   getCompanyInfo: function() {
+    console.log("id:", this.data.id)
     wx.request({
-      url: Api.companyDetail + this.data.id + '?token=' + this.data.token,
-      data: {},
+      url: Api.companyDetail,  // + this.data.id + '?token=' + this.data.token,
+      data: {
+        token: this.data.token,
+        id: this.data.id
+      },
       method: 'GET',
-      success: (res) => {
+      header:{
+        "Content-Type": "application/x-www-form-urlencoded"
+      },      
 
+      success: (res) => {
+        console.log("getcompany info return:", res)
         this.setData({
-          companyName: res.data.company.name,
-          companyLocation: res.data.company.address,
+          companyName: res.data.data.Name,
+          companyLocation: res.data.data.Address,
         })
       },
       fail: function (fail) {
@@ -50,24 +58,33 @@ Page({
   },
 
   checkBtn_click: function (event) {
-
+    var message = "TTTTTTTXXXXXXXXXXXXXXXXX"
     wx.showModal({
       title: '申请加入公司',
-      content: '确定加入该公司吗？这无法变更，请仔细考虑',
+      content: '确定加入该公司吗？',
       success: (res) => {
         if (res.confirm) {
+          wx.redirectTo({
+            url: '/pages/audit/audit?companyName=' + this.data.companyName + '&message=' + message
+          })
+          /*
           wx.request({
-            url: Api.joinCompany + this.data.token,
+            url: Api.joinCompany,
             data: {
-              companyId: this.data.id
+              token: this.data.token,
+              companyId: this.data.id,
             },
             method: 'POST',
+            header: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
             success: (res) => {
+              console.log(res)
               wx.redirectTo({
                 url: '/pages/audit/audit?companyName=' + this.data.companyName + '&message=' + res.data.message
              })
             }
-          })
+          })*/
         }
       }
     })

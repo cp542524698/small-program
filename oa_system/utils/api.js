@@ -1,18 +1,23 @@
 var host = 'https://cephcp.ztgame.com.cn/ztgame/';   //ztgame是变量，修改为具体的企业名称即可
 
 var session = host + 'session';
-var company = host + 'company/new?token=';
-var companyList = host + 'user/companies?token=';
-var companyDetail = host + 'user/company/';
-var joinCompany = host + 'user/company?token=';
+var company = host + 'company/new';
+var staffsList = host + 'company/staffs'
+var companyList = host + 'user/companies';
+var companyDetail = host + 'user/company';
+var joinCompany = host + 'user/company';
+var changName = host + 'company/change';
+var changLocation = host + 'company/changeLocation';
+var savetime = host + 'company/savetime';
+var information = host + 'company/information';
+
 var applylist = host + 'company/applylist?token=';
 var deleteCompany = host + 'company/now?token=';
 var verifyApply = host + 'company/applylist/';
 
-var staffsList = host + 'company/staffs?token='
 var worktime = host + 'company/information?token=' //用于获取该公司上班时间
 
-var information = host + 'company/information?token='
+
 
 var staffAttdance = host + 'company/staffs/day?token='
 
@@ -35,7 +40,10 @@ module.exports = {
     information: information,
     staffAttdance: staffAttdance,
     qrcode: qrcode,
-    tofree: tofree
+    tofree: tofree,
+    changName:changName,
+    changLocation: changLocation,
+    savetime: savetime,
 }
 
 //58b42745679e8155e0a771de
