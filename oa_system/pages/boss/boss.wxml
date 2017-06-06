@@ -29,13 +29,13 @@
             <text>考勤时间</text>
             <view class="start-time-am">
                 <picker mode="time" value="{{AMstart}}" data-time="AMstart" start="00:00" end="23:59" bindchange="bindTimeChange">
-                    {{AMstart}}
+                    {{company.Amstart}}
                 </picker>
             </view>
             <view>-</view>
             <view class="end-time-am">
                 <picker mode="time" value="{{AMend}}" data-time="AMend" start="00:00" end="23:59" bindchange="bindTimeChange">
-                    {{AMend}}
+                    {{company.Amend}}
                 </picker>
             </view>
         </view>
@@ -43,13 +43,13 @@
             <text>考勤时间</text>
             <view class="start-time-pm">
                 <picker mode="time" value="{{PMstart}}" data-time="PMstart" start="00:00" end="23:59" bindchange="bindTimeChange">
-                    {{PMstart}}
+                    {{company.Pmstart}}
                 </picker>
             </view>
             <view>-</view>
             <view class="end-time-pm">
                 <picker mode="time" value="{{PMend}}" data-time="PMend" start="00:00" end="23:59" bindchange="bindTimeChange">
-                    {{PMend}}
+                    {{company.Pmend}}
                 </picker>
             </view>
         </view>

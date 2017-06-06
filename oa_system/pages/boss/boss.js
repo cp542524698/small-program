@@ -94,15 +94,18 @@ Page({
           header: {
             "Content-Type": "application/x-www-form-urlencoded"
           },
-          success: (res) => {
-            console.log(res)
-            if (res.data.Code == 200) {
+          success: (res1) => {
+            console.log(res1)
+            if (res1.data.Code == 200) {
               //this.getInformation()
+
               var company = wx.getStorageSync('company')
               company.Address= res.address
               company.latitude = res.latitude
               company.longitude = res.longitude
-              
+              this.setDat({
+                company: company
+              })
               try {
                 wx.setStorage({
                   key: 'company',
@@ -144,27 +147,22 @@ Page({
   bindTimeChange: function (event) {
     var value = event.detail.value
     var time = event.currentTarget.dataset.time
-
+    var company = this.data.company;
     switch (time) {
-      case 'AMstart': this.setData({
-        AMstart: value
-      })
+      case 'AMstart': company.Amstart = value
         break;
-      case 'AMend': this.setData({
-        AMend: value
-      })
+      case 'AMend': company.Amend = value
         break;
-      case 'PMstart': this.setData({
-        PMstart: value
-      })
+      case 'PMstart': company.Pmstart = value
         break;
-      case 'PMend': this.setData({
-        PMend: value
-      })
+      case 'PMend': company.Pmend = value  
         break;
       default:
         break;
     }
+    this.setData({
+      company: company
+    })
   },
 
   //保存修改的上下班时间
@@ -172,11 +170,12 @@ Page({
     wx.request({
       url: Api.savetime,
       data: {
+        id: this.data.company.Id,
         token: this.data.token,
-        amstart: this.data.AMstart,
-        amend: this.data.AMend,
-        pmstart: PMstart,
-        pmend: PMend,
+        amstart: this.data.company.Amstart,
+        amend: this.data.company.Amend,
+        pmstart: this.data.company.Pmstart,
+        pmend: this.data.company.Pmend,
       },
       method: 'POST',
       header: {
@@ -186,8 +185,8 @@ Page({
         // success
         console.log(res)
         if (res.data.Code == 200) {
-          var company = wx.getStorageSync('company')
-          company.Name = this.data.newName
+          //var company = wx.getStorageSync('company')
+          var company = this.data.company
           try {
             wx.setStorage({
               key: 'company',
