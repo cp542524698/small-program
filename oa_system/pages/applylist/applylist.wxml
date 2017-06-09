@@ -10,16 +10,16 @@
             <block wx:for="{{list}}" >
                 <view class="user">
                     <view class="avatar">
-                        <image src="{{item.img}}"></image>
+                        <image src="{{item.Imgurl}}"></image>
                     </view>
                     <view class="name">
-                        <text>{{item.wxName}}</text>
+                        <text>{{item.Nickname}}</text>
                     </view>
                 </view>
                 
                 <view class="button">
-                    <view data-id="{{item._id}}" class="refuse" bindtap="handleRefuse">拒绝</view>
-                    <view data-id="{{item._id}}" class="accept" bindtap="handleAccept">接受</view>
+                    <view data-id="{{item.Id}}" class="refuse" bindtap="handleRefuse">拒绝</view>
+                    <view data-id="{{item.Id}}" class="accept" bindtap="handleAccept">接受</view>
                 </view>     
             </block>
         </view>

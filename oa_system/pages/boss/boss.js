@@ -241,7 +241,7 @@ Page({
   //申请列表
   toApplyList: function () {
     wx.navigateTo({
-      url: '/pages/applylist/applylist',
+      url: '/pages/applylist/applylist?conpanyid=' + this.data.company.Id,
     })
   },
 

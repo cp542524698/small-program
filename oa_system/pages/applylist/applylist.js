@@ -1,74 +1,93 @@
 // pages/applylist/applylist.js
-
+var app = getApp()
+console.log(app.appName)
 var Api = require('../../utils/api.js');
 
 Page({
-  data:{
+  data: {
     list: []
   },
-  onLoad:function(options){
+  onLoad: function (options) {
 
     this.setData({
+      id: options.conpanyid,
       token: wx.getStorageSync('token')
     })
 
     this.getApplyList()
   },
-  onReady:function(){
+  onReady: function () {
     // 页面渲染完成
   },
-  onShow:function(){
+  onShow: function () {
     // 页面显示
   },
-  onHide:function(){
+  onHide: function () {
     // 页面隐藏
   },
-  onUnload:function(){
+  onUnload: function () {
     // 页面关闭
   },
 
-  getApplyList: function() {
+  getApplyList: function () {
     wx.request({
-      url: Api.applylist + this.data.token,
-      data: {},
+      url: Api.applylist,
+      data: {
+        token: this.data.token,
+        companyId: this.data.id,
+      },
       method: 'GET',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+
       success: (res) => {
         console.log(res)
-        this.setData({
-          list: res.data.applycache.applyMember
-        })
+        if (res.data.Code == 200) {
+          this.setData({
+            list: res.data.data
+          })
+        }
       }
     })
   },
 
-  handleRefuse: function(event) {
+  handleRefuse: function (event) {
     var id = event.currentTarget.dataset.id;
-    this.handleApply(id, 'nopass', () => {
+    console.log("id:", id)
+    this.handleApply(id, 1, () => {
       this.getApplyList()
     })
   },
 
-  handleAccept: function(event) {
+  handleAccept: function (event) {
     var id = event.currentTarget.dataset.id;
-    this.handleApply(id, 'pass', () => {
+    this.handleApply(id, 0, () => {
       this.getApplyList()
     })
   },
 
-  handleApply: function(id, validation, cb) {
+  handleApply: function (id, validation, cb) {
     wx.request({
-      url: Api.verifyApply + id + '?token=' + this.data.token,
+      url: Api.verifyApply,
       data: {
-        validation: validation
+        token: this.data.token,
+        userid: id,
+        companyid: this.data.companyId,
+        validation: validation,
       },
       method: 'POST',
-      success: function(res){
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
         // success
-        if(res.data.code == 200) {
+        console.log(res)
+        if (res.data.code == 200) {
           typeof cb === 'function' && cb()
         }
       }
     })
   }
-  
+
 })

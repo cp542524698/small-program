@@ -5,20 +5,17 @@ var company = host + 'company/new';
 var staffsList = host + 'company/staffs'
 var companyList = host + 'user/companies';
 var companyDetail = host + 'user/company';
-var joinCompany = host + 'user/company';
+var joinCompany = host + 'join/company';
 var changName = host + 'company/change';
 var changLocation = host + 'company/changeLocation';
 var savetime = host + 'company/savetime';
 var information = host + 'company/information';
+var applylist = host + 'company/applylist';
+var verifyApply = host + 'company/verify';
 
-var applylist = host + 'company/applylist?token=';
+
 var deleteCompany = host + 'company/now?token=';
-var verifyApply = host + 'company/applylist/';
-
 var worktime = host + 'company/information?token=' //用于获取该公司上班时间
-
-
-
 var staffAttdance = host + 'company/staffs/day?token='
 
 var qrcode = host + 'qrcode/get?token='

@@ -58,7 +58,9 @@ Page({
   },
 
   checkBtn_click: function (event) {
-    var message = "TTTTTTTXXXXXXXXXXXXXXXXX"
+    console.log("company id:", this.data.id)
+    var message = "您已申请加入 " + this.data.companyName
+    var companyid = this.data.id
     wx.showModal({
       title: '申请加入公司',
       content: '确定加入该公司吗？',
@@ -67,12 +69,12 @@ Page({
           wx.redirectTo({
             url: '/pages/audit/audit?companyName=' + this.data.companyName + '&message=' + message
           })
-          /*
+          
           wx.request({
             url: Api.joinCompany,
             data: {
               token: this.data.token,
-              companyId: this.data.id,
+              companyId: companyid,
             },
             method: 'POST',
             header: {
@@ -81,10 +83,10 @@ Page({
             success: (res) => {
               console.log(res)
               wx.redirectTo({
-                url: '/pages/audit/audit?companyName=' + this.data.companyName + '&message=' + res.data.message
+                url: '/pages/audit/audit?companyName=' + this.data.companyName + '&message=已发送发送申请消息'
              })
             }
-          })*/
+          })
         }
       }
     })
