@@ -68,12 +68,14 @@ Page({
   },
 
   handleApply: function (id, validation, cb) {
+    console.log("token:", this.data.token)
+    var token = this.data.token
     wx.request({
       url: Api.verifyApply,
       data: {
-        token: this.data.token,
         userid: id,
-        companyid: this.data.companyId,
+        token: token,
+        companyid: this.data.id,
         validation: validation,
       },
       method: 'POST',
@@ -83,8 +85,19 @@ Page({
       success: function (res) {
         // success
         console.log(res)
-        if (res.data.code == 200) {
+        if (res.data.Code == 200) {
+          wx.showToast({
+            title: '添加成功',
+            icon: 'success',
+            duration: 2000
+          })
           typeof cb === 'function' && cb()
+        }else{
+          wx.showToast({
+            title: '添加失败，请重试',
+            icon: 'fail',
+            duration: 2000
+          })
         }
       }
     })

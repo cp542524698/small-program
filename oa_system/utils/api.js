@@ -12,6 +12,7 @@ var savetime = host + 'company/savetime';
 var information = host + 'company/information';
 var applylist = host + 'company/applylist';
 var verifyApply = host + 'company/verify';
+var getrelation = host + 'getrelation';
 
 
 var deleteCompany = host + 'company/now?token=';
@@ -41,6 +42,7 @@ module.exports = {
     changName:changName,
     changLocation: changLocation,
     savetime: savetime,
+    getrelation: getrelation,
 }
 
 //58b42745679e8155e0a771de

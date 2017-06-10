@@ -1,7 +1,19 @@
 <!--pages/login/login.wxml-->
 
 
-<view class="login">
-    <button type="default" size="mini" bindtap="handleLoginBtn">微信登录</button>
+<view wx:if="{{token == '' }}" class="login">
+  <button type="default" size="mini" bindtap="handleLoginBtn">微信登录</button>
 </view>
 
+<view wx:else>
+  <view wx:if="{{has == true}}">
+    <text>加入的企业:</text>
+    <view wx:for="{{companys}}">
+      <text>{{item.Name}} </text>
+      <button id="{{item.Id}}"  bindtap="into"> 进入 </button>
+    </view>
+  </view>
+  <view wx:else>
+    <text>开始创建企业</text>
+  </view>
+</view>
