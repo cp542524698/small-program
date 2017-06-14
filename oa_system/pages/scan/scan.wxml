@@ -1,2 +1,65 @@
-<!--pages/scan/scan.wxml-->
-<text>pages/scan/scan.wxml</text>
+<view class="manage">
+  <view>
+    <text class="word">当前时间: {{now}}</text>
+  </view>
+</view>
+<view class="line"></view>
+
+<view class="manage">
+  <view>
+    <view class="word">上午工作时间: {{company.Amstart}} - {{company.Amend}}</view>
+  </view>
+</view>
+<view class="line"></view>
+
+<view class="manage">
+  <view>
+    <text class="word">下午工作时间: {{company.Pmstart}} - {{company.Pmend}}</text>
+  </view>
+</view>
+<view class="line"></view>
+
+<view class="manage">
+  <view>
+    <text class="word">可签到地点: {{company.Address}}</text>
+  </view>
+</view>
+<view class="line"></view>
+
+<text class="word"> {{now1}}</text>
+<view class="manage1">
+  <view>
+    <text class="word">上午上班打卡: </text>
+  </view>
+</view>
+<view class="line"></view>
+
+<view class="manage1">
+  <view>
+    <text class="word">上午下班打卡: </text>
+  </view>
+</view>
+<view class="line"></view>
+
+<view class="manage1">
+  <view>
+    <text class="word">下午上班打卡:</text>
+  </view>
+</view>
+<view class="line"></view>
+
+<view class="manage1">
+  <view>
+    <text class="word">下午下班打卡:</text>
+  </view>
+</view>
+
+
+<view wx:if="{{am == true}}" class="win">
+  <button class="startwork" type="primary" bindtap="start">上午上班</button>
+  <button class="stopwork" type="primary" bindtap="stop">上午下班</button>
+</view>
+<view wx:else class="win">
+  <button class="startwork" type="primary" bindtap="start">下午上班</button>
+  <button class="stopwork" type="primary" bindtap="stop">下午下班</button>
+</view>

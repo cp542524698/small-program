@@ -93,7 +93,7 @@ Page({
       }
     }
     console.log(title)
-    title=1
+    title = 2
     if (title == 0 || title==1) {  //创始人 或管理员
       wx.request({
         url: Api.companyDetail,
@@ -137,8 +137,9 @@ Page({
       })
     } else if (title == 2) {   //普通员工
       console.log("------------------------")
-      wx.switchTab({
+      wx.redirectTo({
         url: '/pages/scan/scan',
+        //url: '/pages/self/self',
       })
     } else {
       wx.redirectTo({

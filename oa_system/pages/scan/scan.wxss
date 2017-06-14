@@ -1,1 +1,79 @@
 /* pages/scan/scan.wxss */
+.manage{
+  display: flex; 
+  justify-content: flex-start; 
+  flex-direction: row;
+  align-items: fstretch;
+  align-content: stretch;
+  flex-wrap: wrap;
+  background-color:white;
+  width: 20rem;
+  height: 60rpx;
+  margin-bottom: 5rpx;
+}
+
+.manage1{
+  display: flex; 
+  justify-content: flex-start; 
+  flex-direction: row;
+  align-items: fstretch;
+  align-content: stretch;
+  flex-wrap: wrap;
+  background-color:white;
+  width: 50rem;
+  height: 170rpx;
+  margin-bottom: 5rpx;
+  border: solid red 1rpx;
+}
+
+.word {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;   
+    padding-left:20rpx;
+    font-size: 30rpx;
+    height: 60%;
+    margin-top: 20rpx;
+}
+
+.line{
+  display: flex; 
+  justify-content: flex-start; 
+  flex-direction: row;
+  align-items: fstretch;
+  align-content: stretch;
+  flex-wrap: wrap;
+  width: 18rem;
+  margin-left: 30rpx;
+  border: black solid 2rpx;
+}
+
+
+.win{
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom:0%;
+  height: 140rpx;
+  width: 100%;
+  align-items:center;
+  text-align:center;
+  background-color:	#FCFCFC;
+}
+
+.startwork{
+  display: flex;
+  justify-content: center;  /*左右具中*/
+  align-items: center;      /*上下具中*/
+  width: 40%;
+  height: 60rpx;
+  background-color: red;
+}
+
+.stopwork{
+  display: flex;
+  justify-content: center;  /*左右具中*/
+  align-items: center;      /*上下具中*/
+  width: 40%;
+  height: 60rpx;
+}
