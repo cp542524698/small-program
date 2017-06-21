@@ -12,7 +12,9 @@ function formatTime(date, fmt) {
   }else if(fmt==-1){
       return [year, month, day].map(formatNumber).join('-')
   }else{
-    if (hour > fmt + 1){
+    var strs = fmt.split(":")
+    var amend = parseInt(strs[0])
+    if (hour > amend + 1 ){
         return false
     }else{
         return true

@@ -9,6 +9,10 @@ Page({
         showView: false,
         am: true,
         whichtime: '',
+        amstart: null,
+        amend: null,
+        pmstart: null,
+        pmend: null,
     },
     onLoad: function (options) {
         // 页面初始化 options为页面跳转所带来的参数
@@ -20,6 +24,7 @@ Page({
         })
         var now = util.formatTime(new Date, 0)
         var now1 = util.formatTime(new Date, -1)
+        console.log(that.data.company.Amend)
         var am = util.formatTime(new Date, that.data.company.Amend)
         that.setData({
             now: now,
@@ -58,11 +63,30 @@ Page({
                 "Content-Type": "application/x-www-form-urlencoded"
             },
             success: function (res) {
-                console.log("=============")
                 console.log(res)
-                console.log("=============")
                 if (res.data.Code == 200) {
-
+                    for(var i=0; i<res.data.data.length; i++){
+                        if (res.data.data[i].Whichtime == 0){
+                            that.setData({
+                                amstart: res.data.data[i]
+                            })
+                            amstart = res.data.data[i]
+                        }else if(res.data.data[i].Whichtime==1){
+                            that.setData({
+                                pmstart: res.data.data[i]
+                            })
+                        } else if (res.data.data[i].Whichtime == 2){
+                            that.setData({
+                                amend: res.data.data[i]
+                            }) 
+                        }else if(res.data.data[i].Whichtime == 3){
+                            that.setData({
+                                pmend: res.data.data[i]
+                            }) 
+                        }else{
+                            console.log("get info error")
+                        }
+                    }
                 }
             },
             fail: function(res){
