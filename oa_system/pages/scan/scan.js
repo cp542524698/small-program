@@ -1,17 +1,22 @@
 // pages/scan/scan.js
 var util = require('../../utils/utils.js')
+var Api = require('../../utils/api.js');
 
 Page({
     data: {
         now: '',
         now1: '',
+        showView: false,
         am: true,
+        whichtime: '',
     },
     onLoad: function (options) {
         // 页面初始化 options为页面跳转所带来的参数
         var that = this
         that.setData({
             company: wx.getStorageSync('company'),
+            token: wx.getStorageSync('token'),
+            userid: wx.getStorageSync('userid')
         })
         var now = util.formatTime(new Date, 0)
         var now1 = util.formatTime(new Date, -1)
@@ -41,8 +46,29 @@ Page({
                 console.log("getLocation fail:", res)
             }
         })
+        wx.request({
+            url: Api.gettime,
+            data: {
+                token: that.data.token,
+                userid: that.data.userid,
+                companyid: that.data.company.Id,
+            },
+            method: "GET",
+            header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            success: function (res) {
+                console.log("=============")
+                console.log(res)
+                console.log("=============")
+                if (res.data.Code == 200) {
 
-
+                }
+            },
+            fail: function(res){
+                console.log(res)
+            }
+        })    
         console.log(that.data.company)
         console.log(that.data.now)
         /*
@@ -61,34 +87,99 @@ Page({
         console.log("=======scan here")
         */
     },
-    start: function(){
+    start: function () {
         var that = this
         var am = that.data.am
         var timeinfo
-        if (am== true){
+        var whichtime = -1
+        if (am == true) {
             //IsLate
             timeinfo = util.IsLate(new Date, that.data.company.Amstart)
-        }else{
+            whichtime = 0
+        } else {
             timeinfo = util.IsLate(new Date, that.data.company.Pmstart)
+            whichtime = 1
         }
 
         var distance = util.Distance(that.data.company.Latitude, that.data.company.Longitude, that.data.src_lat, that.data.src_long, that.data.accuracy)
+        var late = timeinfo[0]
+        var worktime = timeinfo[1]
+        var showview = true
+        that.setData({
+            showView: showview,
+            worktime: worktime,
+            late: late,
+            distance: distance,
+            whichtime: whichtime
+        })
         console.log("距离目标地点:", distance)
     },
-    stop: function(){
+    stop: function () {
         var that = this
         var am = that.data.am
         var timeinfo
+        var whichtime = -1
         if (am == true) {
             //IsLate
             timeinfo = util.IsLate(new Date, that.data.company.Amend)
+            whichtime = 2
         } else {
             timeinfo = util.IsLate(new Date, that.data.company.Pmend)
+            whichtime = 3
         }
 
         var distance = util.Distance(that.data.company.Latitude, that.data.company.Longitude, that.data.src_lat, that.data.src_long, that.data.accuracy)
         console.log("距离目标地点:", distance)
+        var late = timeinfo[0]
+        var worktime = timeinfo[1]
+        var showview = true
+        that.setData({
+            whichtime : whichtime,
+            worktime: worktime,
+            late: late,
+            distance: distance,
+            showView: showview,
+        })
 
+    },
+
+    commit: function () {
+        var that = this
+        wx.request({
+            url: Api.commit,
+            data: {
+                token: that.data.token,
+                userid: that.data.userid,
+                companyid: that.data.company.Id,
+                worktime: that.data.worktime,
+                late: that.data.late,
+                distance: that.data.distance,
+                whichtime: that.data.whichtime,
+            },
+            method: "POST",
+            header: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            success: function (res) {
+                if (res.data.Code == 200) {
+                    that.setData({
+                        showView: false,
+                    })
+                    wx.showToast({
+                        title: '签到成功',
+                        icon: 'success',
+                        duration: 2000
+                    })
+                }
+            },
+            fail: function (res) {
+                wx.showToast({
+                    title: '签到失败,请重试',
+                    icon: 'success',
+                    duration: 2000
+                })
+            }
+        })
     },
     onReady: function () {
         // 页面渲染完成

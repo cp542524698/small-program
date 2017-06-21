@@ -63,3 +63,23 @@
   <button class="startwork" type="primary" bindtap="start">下午上班</button>
   <button class="stopwork" type="primary" bindtap="stop">下午下班</button>
 </view>
+
+
+<view class="{{showView?'show':'hide'}}" >
+    <view class="view1">签到时间: {{worktime}} </view>
+    <view style="margin-left: 30rpx;color:#7CFC00; font-size: 30rpx" type="primary" bindtap="restart">重新定位</view>
+    <view wx:if="{{late == ture}}" class="dis">
+        <text style="color:#7CFC00;font-size:30rpx "> 签到正常 </text>
+    </view>
+    <view wx:else class="dis">
+        <text style="color:#FF0000;font-size: 30rpx"> 时间异常,迟到 </text>
+    </view>
+    <text class="view1">距离签到点: {{distance}}米 {{company.Address}}</text>
+    <view wx:if="{{distance <= company.Distance}}" class="dis" >
+        <text style="color:#7CFC00;font-size:30rpx ">位置正常</text>
+    </view>
+    <view wx:else class="dis">
+        <text style="color:#FF0000;font-size: 30rpx"> 位置异常,不在签到范围内</text>
+    </view>
+    <button class="commit" type="primary" bindtap="commit">提交</button>
+</view>

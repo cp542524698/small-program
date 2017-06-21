@@ -34,9 +34,9 @@ function IsLate(date, worktime){
     var _minute = parseInt(strs[1])
     var strtime = [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
     if(_hour <= hour && _minute <= minute){
-        return [true, strtime]
-    }else{
         return [false, strtime]
+    }else{
+        return [true, strtime]
     } 
 }
 
@@ -75,8 +75,9 @@ function Distance(dst_lat, dst_long, lat2, lng2, accuracy){
    h1 = (3 * r - 1) / 2 / c;
    h2 = (3 * r + 1) / 2 / s;
 
-   return d * (1 + fl * (h1 * sf * (1 - sg) - h2 * (1 - sf) * sg)); 
-
+   var distance = d * (1 + fl * (h1 * sf * (1 - sg) - h2 * (1 - sf) * sg)) 
+   var int_distance = parseInt(distance)
+   return int_distance
 }
 
 
