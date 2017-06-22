@@ -29,36 +29,72 @@
 <text class="word"> {{now1}}</text>
 
 <view class="manage1">
+    <view>
     <text class="word">上午上班打卡: </text>
+    </view>
     <view wx:if="{{amstart == null}}">
-    <text>暂无打卡信息 </text>
+        <view>
+            <text>暂无打卡信息 </text>
+        </view>
     </view>
     <view wx:else>
-    <text>amstart.Distance</text>
+        <view wx:if="{{amstart.Late == 1}}">
+            <view> 签到时间: {{amstart.Worktime}} </view>
+            <view> 时间异常,迟到</view>
+            <view> 距离签到点:{{amstart.Distance}}米</view>
+        </view>
+        <view wx:else>
+            <view> 签到时间: {{amstart.Worktime}} </view>
+            <view> 时间正常</view>
+            <view> 距离签到点:{{amstart.Distance}}米</view>
+        </view>
     </view>
-  </view>
 </view>
 
 <view class="line"></view>
 
 <view class="manage1">
-  <view>
     <text class="word">上午下班打卡: </text>
-  </view>
+    <view wx:if="{{amend == null}}">
+        <view>
+            <text>暂无打卡信息 </text>
+        </view>
+    </view>
+    <view wx:else>
+        <view>
+            <text>{{amend.Distance}}</text>
+        </view>
+    </view>
 </view>
 <view class="line"></view>
 
 <view class="manage1">
-  <view>
-    <text class="word">下午上班打卡:</text>
-  </view>
+    <text class="word">下午下班打卡: </text>
+    <view wx:if="{{pmstart == null}}">
+        <view>
+            <text>暂无打卡信息 </text>
+        </view>
+    </view>
+    <view wx:else>
+        <view>
+            <text>pmstart.Distance</text>
+        </view>
+    </view>
 </view>
 <view class="line"></view>
 
 <view class="manage1">
-  <view>
-    <text class="word">下午下班打卡:</text>
-  </view>
+    <text class="word">下午下班打卡: </text>
+    <view wx:if="{{pmend == null}}">
+        <view>
+            <text>暂无打卡信息 </text>
+        </view>
+    </view>
+    <view wx:else>
+        <view>
+            <text>pmend.Distance</text>
+        </view>
+    </view>
 </view>
 
 

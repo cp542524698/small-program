@@ -65,34 +65,36 @@ Page({
             success: function (res) {
                 console.log(res)
                 if (res.data.Code == 200) {
-                    for(var i=0; i<res.data.data.length; i++){
-                        if (res.data.data[i].Whichtime == 0){
-                            that.setData({
-                                amstart: res.data.data[i]
-                            })
-                            amstart = res.data.data[i]
-                        }else if(res.data.data[i].Whichtime==1){
-                            that.setData({
-                                pmstart: res.data.data[i]
-                            })
-                        } else if (res.data.data[i].Whichtime == 2){
-                            that.setData({
-                                amend: res.data.data[i]
-                            }) 
-                        }else if(res.data.data[i].Whichtime == 3){
-                            that.setData({
-                                pmend: res.data.data[i]
-                            }) 
-                        }else{
-                            console.log("get info error")
+                    if (res.data.data != null) {
+                        for (var i = 0; i < res.data.data.length; i++) {
+                            if (res.data.data[i].Whichtime == 0) {
+                                console.log(res.data.data[i])
+                                that.setData({
+                                    amstart: res.data.data[i]
+                                })
+                            } else if (res.data.data[i].Whichtime == 1) {
+                                that.setData({
+                                    pmstart: res.data.data[i]
+                                })
+                            } else if (res.data.data[i].Whichtime == 2) {
+                                that.setData({
+                                    amend: res.data.data[i]
+                                })
+                            } else if (res.data.data[i].Whichtime == 3) {
+                                that.setData({
+                                    pmend: res.data.data[i]
+                                })
+                            } else {
+                                console.log("get info error")
+                            }
                         }
                     }
                 }
             },
-            fail: function(res){
+            fail: function (res) {
                 console.log(res)
             }
-        })    
+        })
         console.log(that.data.company)
         console.log(that.data.now)
         /*
@@ -158,7 +160,7 @@ Page({
         var worktime = timeinfo[1]
         var showview = true
         that.setData({
-            whichtime : whichtime,
+            whichtime: whichtime,
             worktime: worktime,
             late: late,
             distance: distance,
