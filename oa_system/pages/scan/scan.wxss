@@ -15,13 +15,13 @@
 .manage1{
   display: flex; 
   justify-content: flex-start; 
-  flex-direction: row;
+  flex-direction: column;
   align-items: fstretch;
   align-content: stretch;
   flex-wrap: wrap;
   background-color:white;
   width: 50rem;
-  height: 170rpx;
+  height: 200rpx;
   margin-bottom: 5rpx;
   border: solid red 1rpx;
 }
@@ -29,11 +29,22 @@
 .word {
     display: flex;
     flex-direction: column;
-    flex-wrap: nowrap;   
+    flex-wrap: wrap;   
     padding-left:20rpx;
     font-size: 30rpx;
     height: 60%;
     margin-top: 20rpx;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;   
+    padding-left:140rpx;
+    font-size: 26rpx;
+    height: 60%;
+    margin-top: 10rpx;
+    border: solid red 1rpx;
 }
 
 .line{
