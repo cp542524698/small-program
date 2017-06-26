@@ -14,7 +14,8 @@ function formatTime(date, fmt) {
   }else{
     var strs = fmt.split(":")
     var amend = parseInt(strs[0])
-    if (hour > amend + 1 ){
+    var min = parseInt(strs[1])
+    if ((hour >= amend + 1) ||( hour == amend && minute >= min + 30 )){
         return false
     }else{
         return true
@@ -35,7 +36,7 @@ function IsLate(date, worktime){
     var _hour = parseInt(strs[0])
     var _minute = parseInt(strs[1])
     var strtime = [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-    if(_hour <= hour && _minute <= minute){
+    if(_hour >= hour && _minute >= minute){
         return [false, strtime]
     }else{
         return [true, strtime]

@@ -1,17 +1,8 @@
 var Api = require('../../utils/api.js')
 var companyId, commutingTime;
 Page({
-  data: {
-    lists: [{
-      head: '',
-      name: '',
-      workTime: '09:01-12:00  14:00-18:00'
-    },
-    {
-      workTime: ''
-    },
-    ],
-    date: '2017-3-1'
+    data:{
+    stafflist: null,
   },
   onLoad: function (options) {
     this.setData({
@@ -50,6 +41,61 @@ Page({
     // })
   },
 
+  detail: function (event) {
+      var that = this
+      var userid = event.currentTarget.dataset.userid;
+      var companyid = event.currentTarget.dataset.companyid;
+      wx.navigateTo({
+          url: "../../pages/detail/detail?userid="+userid + "&companyid="+companyid
+      })
+  },
+
+  del: function(event){
+    var that = this
+    var userid = event.currentTarget.dataset.userid;
+    var companyid = event.currentTarget.dataset.companyid;
+    var name = event.currentTarget.dataset.companyname;
+    wx.request({
+        url: Api.delstaff,
+        data: {
+            userid: userid,
+            companyid: companyid,
+            token: this.data.token
+        },
+        method: 'POST',
+        header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        success: (res) => {
+            // success
+            if (res.data.Code == 200) {
+                wx.showToast({
+                    title: '删除成功',
+                    icon: 'success',
+                    duration: 2000
+                })
+                stafflist = that.data.stafflist
+                delete stafflist[name]
+                that.setData({
+                    stafflist: stafflist
+                })  
+            }else{
+                wx.showToast({
+                    title: '删除失败,请重试',
+                    icon: 'success',
+                    duration: 2000
+                })
+            }
+        },
+        fail: function () {
+            // fail
+        },
+        complete: function () {
+            // complete
+        } 
+    })
+  },
+
   onShow: function () {
     this.getStaffsList()
   },
@@ -69,7 +115,7 @@ Page({
         if (res.data.Code == 200) {
           console.log('list', res)
           this.setData({
-            data: res.data.data
+            stafflist: res.data.data
           })
           
         }

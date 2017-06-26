@@ -1,26 +1,27 @@
 <!--pages/create/create.wxml-->
 
 <view class="create">
-    <view class="header">
-        <text>请输入以下信息</text>
+  <view class="header">
+    <text>请输入以下信息</text>
+  </view>
+  <view class="company">
+    <text>公司</text>
+    <input type="text" placeholder="输入公司名" bindinput="handleInput" />
+    <!--<icon type="warn" size="24"></icon>-->
+  </view>
+  <view class="location" bindtap="chooseLocation">
+    <text>定位</text>
+    <view class="address">
+      <text>{{location.name}}</text>
     </view>
-    <view class="company">
-        <text>公司</text>
-        <input type="text" placeholder="输入公司名" bindinput="handleInput" />
-        <!--<icon type="warn" size="24"></icon>-->
-    </view>
-    <view class="location" bindtap="chooseLocation">
-        <text>定位</text>
-        <view class="address"><text>{{location.name}}</text></view>
-        <view class="arrow"></view>
-    </view>
-    <view class="error">
-        <text>{{errMsg}}</text>
-    </view>
-    <view class="button" bindtap="handleCreateCompany">
-        <button class="default-button" type="default" size="default" hover-class="hover">创建</button>
-    </view>
+    <view class="arrow"></view>
+  </view>
+  <view class="mapshow">
+    <map id="map4select" longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" scale="20" style="width:{{map_width}}px;height:{{map_height}}px" bindregionchange="regionchange" controls="{{controls}}">
+    </map>
+  </view>
+  <view class="button" bindtap="handleCreateCompany">
+    <button class="default-button" type="default" size="default" hover-class="hover">创建
+    </button>
+  </view>
 </view>
-
-
-

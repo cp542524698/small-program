@@ -4,10 +4,13 @@ var Api = require('../../utils/api.js')
 
 Page({
   data:{
-    name: '',
-    location: '',
-    errMsg: '',
-    token: ''
+    name: null,
+    location: null,
+    errMsg: null,
+    token: null,
+    longitude: null,
+    latitude: null,
+    markers: null,
   },
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
@@ -22,6 +25,49 @@ Page({
     that.setData({
       token: token
     })
+    wx.getLocation({
+        type: 'gcj02',
+        success: function (res) {
+            that.setData({
+                longitude: res.longitude,
+                latitude:  res.latitude,
+                markers:[{
+                  id: 0,
+                  iconPath: "../../images/ic_position.png",
+                  longitude: res.longitude,
+                  latitude:  res.latitude,
+                  width: 30,
+                  height: 30,
+                }]
+            })
+        },
+        fail: function (res) {
+            console.log("getLocation fail:", res)
+        }
+    })
+        //set the width and height
+        // 动态设置map的宽和高
+        wx.getSystemInfo({
+            success: function (res) {
+                console.log('getSystemInfo');
+                console.log(res.windowWidth);
+                that.setData({
+                    map_width: res.windowWidth,
+                    map_height: res.windowWidth,
+                    controls: [{
+                        id: 1,
+                        iconPath: '../../images/ic_location.png',
+                        position: {
+                            left: res.windowWidth / 2 - 8,
+                            top: res.windowWidth / 2 - 16,
+                            width: 30,
+                            height: 30
+                        },
+                        clickable: true
+                    }]
+                })
+            }
+        })
   },
   onReady:function(){
     // 页面渲染完成
@@ -43,12 +89,54 @@ Page({
     })
   },
 
+  //获取中间点的经纬度，并mark出来
+  getLngLat: function () {
+        var that = this;
+        this.mapCtx = wx.createMapContext("map4select");
+        this.mapCtx.getCenterLocation({
+            success: function (res) {
+                that.setData({
+                    longitude: res.longitude,
+                    latitude: res.latitude,
+                    markers: [
+                        {
+                            id: 0,
+                            iconPath: "../../images/ic_position.png",
+                            longitude: res.longitude,
+                            latitude: res.latitude,
+                            width: 30,
+                            height: 30,
+                        }
+                    ]
+                })
+            }
+        })
+    },
+    regionchange(e) {
+        // 地图发生变化的时候，获取中间点，也就是用户选择的位置
+        if (e.type == 'end') {
+            this.getLngLat()
+        }
+    },
+    markertap(e) {
+        console.log(e)
+    },
   //选择定位
   chooseLocation: function() {
     wx.chooseLocation({
       success: (res) => {
         this.setData({
-          location: res
+          location: res,
+          longitude: res.longitude,
+          latitude: res.latitude,
+          markers: [{
+              id: 0,
+              iconPath: "../../images/ic_position.png",
+              longitude: res.longitude,
+              latitude: res.latitude,
+              width: 30,
+              height: 30,
+          }]
         })
       }
     })
@@ -69,9 +157,22 @@ Page({
     var apiUrl = Api.company
     var that = this
     console.log(that.data.token)
-    console.log('========create company')
-    console.log(this.data.location.latitude)
-    console.log(this.data.location.longitude)
+    if(that.data.name == null){
+        wx.showToast({
+            title: '请输入公司名',
+            icon: 'success',
+            duration: 1000
+        })
+        return 
+    }
+    if (that.data.location == null) {
+        wx.showToast({
+            title: '请选中公司定位',
+            icon: 'success',
+            duration: 1000
+        })
+        return
+    }
 
     wx.request({
       url: apiUrl,
@@ -87,9 +188,7 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function(res){
-        console.log(res)
-        console.log(res.data.Code)
-        console.log("========================================")
+        console.log("creatCompany: ",res)
         if(res.data.Code == 200) {
           try{
             wx.setStorage({

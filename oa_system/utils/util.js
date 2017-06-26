@@ -1,6 +1,5 @@
 var Api = require('./api.js')
 var app = getApp()
-console.log(app.appName)
 
 //获取code
 var getCode = function(callback) {

@@ -1,6 +1,5 @@
 // pages/applylist/applylist.js
 var app = getApp()
-console.log(app.appName)
 var Api = require('../../utils/api.js');
 
 Page({

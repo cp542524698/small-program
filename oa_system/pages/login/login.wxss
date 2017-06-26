@@ -1,5 +1,72 @@
 /* pages/login/login.wxss */
 
 .login {
-    display: flex
+    margin-top: 450rpx;
+    width: 80%;
+    height: 60rpx;
+    /*border: 1rpx solid red;*/
+    margin-left: 50rpx;
+}
+
+.button {
+    width: 360rpx;
+    height: 70rpx;
+	border: solid 2px #22a1e0;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 16px;
+    color: lightgreen;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.company {
+    margin-top: 10rpx;
+    width: 80%;
+    height: 60rpx;
+    /*border: 1rpx solid red;*/
+    margin-left: 50rpx;
+}
+.companyshow
+{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 50rpx;
+  align-content:stretch;
+  margin-left: 30rpx;
+}
+
+.GoIcon{
+    height: 40rpx;
+    width: 40rpx;
+    margin-top: 5rpx;
+    margin-left: 10rpx;
+}
+
+.enter{
+    width: 90%;
+    height: 70rpx;
+    font-size: 16px;
+    border: solid 2px lawngreen;
+    text-align: center;
 }

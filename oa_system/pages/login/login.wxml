@@ -1,19 +1,30 @@
 <!--pages/login/login.wxml-->
-
-
-<view wx:if="{{token == '' }}" class="login">
-  <button type="default" size="mini" bindtap="handleLoginBtn">微信登录</button>
+<view class="container">
+  <view class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+  </view>
 </view>
 
-<view wx:else>
+<view wx:if="{{token == null }}" class="login">
+  <button class="button" bindtap="handleLoginBtn">微信登录</button>
+</view>
+<view wx:else class="company">
   <view wx:if="{{has == true}}">
+    <!--
     <text>加入的企业:</text>
+    -->
     <view wx:for="{{companys}}">
+      <view class="companyshow">
       <text>{{item.Name}} </text>
-      <button id="{{item.Id}}"  bindtap="into"> 进入 </button>
+      <image class="GoIcon" src="/images/icons/go.png" mode="aspectFit"></image>
+      </view>
+      <button id="{{item.Id}}" class="enter"  bindtap="into"> 进入 </button>
     </view>
   </view>
+  <!--
   <view wx:else>
     <text>开始创建企业</text>
   </view>
+  -->
 </view>

@@ -15,6 +15,7 @@ var verifyApply = host + 'company/verify';
 var getrelation = host + 'getrelation';
 var commit = host + 'commit';
 var gettime = host + 'gettime';
+var delstaff = host + 'delstaff';
 
 
 var deleteCompany = host + 'company/now?token=';
@@ -47,6 +48,7 @@ module.exports = {
     getrelation: getrelation,
     commit: commit,
     gettime: gettime,
+    delstaff: delstaff,
 }
 
 //58b42745679e8155e0a771de

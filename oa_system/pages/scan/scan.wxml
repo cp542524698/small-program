@@ -76,16 +76,30 @@
             <view>暂无打卡信息 </view>
         </view>
     </view>
-    <view wx:else>
-        <view class="info" wx:if="{{amend.Late == 1}}">
+    <view wx:else class="info">
+        <view wx:if="{{amend.Late == 1}}">
             <view> 签到时间: {{amend.Worktime}} </view>
-            <view> 时间异常,迟到</view>
-            <view> 距离签到点:{{amend.Distance}}米</view>
+            <view style="color: red "> 时间异常,迟到</view>
+            <view wx:if = "{{amend.Distance > company.Distance}}">
+                <view> 距离签到点: {{amend.Distance}} 米</view>
+                <view style="color: red "> 距离异常 </view>
+            </view>
+            <view wx:else>
+                <view> 距离签到点: {{amend.Distance}} 米</view>
+                <view style="color: green"> 距离正常 </view>
+            </view>
         </view>
-        <view class="info" wx:else>
+        <view wx:else>
             <view> 签到时间: {{amend.Worktime}} </view>
-            <view> 时间正常</view>
-            <view> 距离签到点:{{amend.Distance}}米</view>
+            <view style="color: green"> 时间正常</view>
+            <view wx:if = "{{amend.Distance > company.Distance}}">
+                <view> 距离签到点: {{amend.Distance}} 米</view>
+                <view style="color: red "> 距离异常 </view>
+            </view>
+            <view wx:else>
+                <view> 距离签到点: {{amend.Distance}} 米</view>
+                <view style="color: green"> 距离正常 </view>
+            </view>
         </view>
     </view>
 </view>
@@ -100,16 +114,30 @@
             <view>暂无打卡信息 </view>
         </view>
     </view>
-    <view wx:else>
+    <view wx:else class="info">
         <view wx:if="{{pmstart.Late == 1}}">
             <view> 签到时间: {{pmstart.Worktime}} </view>
-            <view> 时间异常,迟到</view>
-            <view> 距离签到点:{{pmstart.Distance}}米</view>
+            <view style="color: red "> 时间异常,迟到</view>
+            <view wx:if = "{{pmstart.Distance > company.Distance}}">
+                <view> 距离签到点: {{pmstart.Distance}} 米</view>
+                <view style="color: red "> 距离异常 </view>
+            </view>
+            <view wx:else>
+                <view> 距离签到点: {{pmstart.Distance}} 米</view>
+                <view style="color: green"> 距离正常 </view>
+            </view>
         </view>
         <view wx:else>
             <view> 签到时间: {{pmstart.Worktime}} </view>
-            <view> 时间正常</view>
-            <view> 距离签到点:{{pmstart.Distance}}米</view>
+            <view style="color: green"> 时间正常</view>
+            <view wx:if = "{{pmstart.Distance > company.Distance}}">
+                <view> 距离签到点: {{pmstart.Distance}} 米</view>
+                <view style="color: red "> 距离异常 </view>
+            </view>
+            <view wx:else>
+                <view> 距离签到点: {{pmstart.Distance}} 米</view>
+                <view style="color: green"> 距离正常 </view>
+            </view>
         </view>
     </view>
 </view>
@@ -125,15 +153,29 @@
         </view>
     </view>
     <view wx:else class="info">
-        <view wx:if="{{pmstart.Late == 1}}">
+        <view wx:if="{{pmend.Late == 1}}">
             <view> 签到时间: {{pmend.Worktime}} </view>
-            <view> 时间异常,迟到</view>
-            <view> 距离签到点:{{pmend.Distance}}米</view>
+            <view style="color: red "> 时间异常,迟到</view>
+            <view wx:if = "{{pmend.Distance > company.Distance}}">
+                <view> 距离签到点: {{pmend.Distance}} 米</view>
+                <view style="color: red "> 距离异常 </view>
+            </view>
+            <view wx:else>
+                <view> 距离签到点: {{pmend.Distance}} 米</view>
+                <view style="color: green"> 距离正常 </view>
+            </view>
         </view>
         <view wx:else>
             <view> 签到时间: {{pmend.Worktime}} </view>
-            <view> 时间正常</view>
-            <view> 距离签到点:{{pmend.Distance}}米</view>
+            <view style="color: green"> 时间正常</view>
+            <view wx:if = "{{pmend.Distance > company.Distance}}">
+                <view> 距离签到点: {{pmend.Distance}} 米</view>
+                <view style="color: red "> 距离异常 </view>
+            </view>
+            <view wx:else>
+                <view> 距离签到点: {{pmend.Distance}} 米</view>
+                <view style="color: green"> 距离正常 </view>
+            </view>
         </view>
     </view>
 </view>
@@ -152,7 +194,7 @@
 <view class="{{showView?'show':'hide'}}">
   <view class="view1">签到时间: {{worktime}} </view>
   <view style="margin-left: 30rpx;color:#7CFC00; font-size: 30rpx" type="primary" bindtap="restart">重新定位</view>
-  <view wx:if="{{late == ture}}" class="dis">
+  <view wx:if="{{late == false}}" class="dis">
     <text style="color:#7CFC00;font-size:30rpx "> 签到正常 </text>
   </view>
   <view wx:else class="dis">

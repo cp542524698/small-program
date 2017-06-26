@@ -12,24 +12,59 @@
 
 -->
 
-<view wx:for="{{data}}">
-  <text>{{index}}</text>
-  <image class="iGoIcon"src="/images/icons/go.png" mode="aspectFit"></image>
+<view wx:for="{{stafflist}}">
+  <view class="companyshow">
+    <text>{{index}}</text>
+    <image class="GoIcon" src="/images/icons/go.png" mode="aspectFit"></image>
+  </view>
   <template is="workers" data="{{item}}" />
+
+  <!--
+  <view wx:for="{{value}}" wx:for-item="value1" wx:for-index="key1" >
+          <view class="userinfo">   
+            <text> {{value1.ImgUrl}} </text>
+            <image class="userinfo-avatar" src="{{value1.ImgUrl}}" ></image>
+            <text class="userinfo-nickname">{{value1.nickName}}</text>
+         </view>
+  </view>
+  -->
+
 </view>
 
 
 <template name="workers">
-  <view class="vWorkRecord">
-    <!--
-    <image class="iHead" src="{{item.Imgurl}}"></image>
-    -->
-    <view wx:for="{{item}}" wx:for-item="value" wx:for-index="key">
-      <view class="avatar">
-        <image src="{{value.Imgurl}}"></image>
+  <view wx:for="{{item}}" wx:for-item="value" wx:for-index="key">
+    <view wx:if="{{value.Title == 0}}">
+      <view class="userinfo" bindtap="review">
+        <image class="userinfo-avatar" src="{{value.Imgurl}}"></image>
+        <text class="nickname">{{value.Nickname}}</text>
+        <text class="button2" > 企业创建者  </text>
+        <!--
+        <button type="primary" class="button" bindtap="allowjoin"> 企业创建者 </button>
+        -->
       </view>
-      <text class="tName">{{value.Nickname}}</text>
+      <view class="line"></view>
     </view>
-
+    <view wx:else>
+    </view>
   </view>
+
+  <view wx:for="{{item}}" wx:for-item="value" wx:for-index="key">
+    <view wx:if="{{ value.Title != 0 }}">
+      <view class="userinfo" bindtap="detail" data-userid="{{value.Id}}" data-companyid="{{value.Companyid}}" >
+        <image class="userinfo-avatar" src="{{value.Imgurl}}"></image>
+        <text class="nickname">{{value.Nickname}}</text>
+        <!--
+        <text class="button2" > 已加入 </text>
+        -->
+        <button type="primary" class="button" bindtap="del"  data-userid="{{value.Id}}" data-companyid="{{value.Companyid}}" data-companyname="{{value.Name}}">
+             允许删除 </button>
+        
+      </view>
+      <view class="line"></view>
+    </view>
+    <view wx:else>
+    </view>
+  </view>
+
 </template>

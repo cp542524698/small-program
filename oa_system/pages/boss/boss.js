@@ -8,8 +8,9 @@ Page({
     AMstart: '09:00',
     AMend: '12:00',
     PMstart: '14:00',
-    PMend: '18:00'
-
+    PMend: '18:00',
+    array: ['100', '200', '300', '500', '800', '1000', '2000', '5000', '6000'],
+    index: 1,
   },
   onLoad: function (options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -34,6 +35,13 @@ Page({
   },
   onUnload: function () {
     // 页面关闭
+  },
+
+  bindPickerChange: function (e) {
+      console.log('picker发送选择改变，携带值为', e.detail.value)
+      this.setData({
+          index: e.detail.value
+      })
   },
 
   //获取公司信息
@@ -172,6 +180,7 @@ Page({
       data: {
         id: this.data.company.Id,
         token: this.data.token,
+        distance: this.data.array[this.data.index],
         amstart: this.data.company.Amstart,
         amend: this.data.company.Amend,
         pmstart: this.data.company.Pmstart,
