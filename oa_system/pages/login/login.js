@@ -7,6 +7,7 @@ Page({
     data: {
         companys: [],
         token: null,
+        userid: null,
         has: false,
     },
 
@@ -35,7 +36,8 @@ Page({
         console.log("token:", token)
         if(token == '' || userid== ''){
             that.setData({
-                token: null
+                token: null,
+                userid: null
             })
         }else{
             that.setData({
@@ -103,7 +105,7 @@ Page({
             }
         })
         console.log(title)
-        //title = 2
+        title = 2
         if (title == 0) {  //创始人 或管理员
             wx.switchTab({ url: '/pages/boss/boss' })
         } else if (title == 1) {
@@ -211,6 +213,18 @@ Page({
             }
         })
     },
+
+    handleCreateBtn: function () {
+        wx.navigateTo({
+            url: '/pages/create/create',
+        })
+    },
+
+    handleJoinBtn: function () {
+        wx.navigateTo({
+            url: '/pages/list/list',
+        })
+    },
     getcompany: function (token) {
         var that = this
         wx.request({
@@ -239,6 +253,12 @@ Page({
                             console.error('存储信息失败')
                         }
                     })
+
+                    that.setData({
+                        has: len,
+                        companys: res.data.data,
+                    })
+                    /*****
                     if (len == false) {
                         wx.redirectTo({
                             url: '/pages/select/select',
@@ -249,7 +269,12 @@ Page({
                             has: len,
                             companys: res.data.data,
                         })
-                    }
+                    }*/
+                }else if (res.data.Code == 403){
+                    that.setData({
+                        token: null,
+                        userid: null
+                    })
                 }
             },
             fail: function (err) {

@@ -1,7 +1,7 @@
 /* pages/login/login.wxss */
 
 .login {
-    margin-top: 450rpx;
+    margin-top: 300rpx;
     width: 80%;
     height: 60rpx;
     /*border: 1rpx solid red;*/
@@ -11,12 +11,12 @@
 .button {
     width: 360rpx;
     height: 70rpx;
-	border: solid 2px #22a1e0;
+	border: solid 2px lightgreen;
     border-radius: 10px;
     text-align: center;
     line-height: 70rpx;
     font-size: 16px;
-    color: lightgreen;
+    color: black;
 }
 .userinfo {
   display: flex;
@@ -39,13 +39,66 @@
   margin-top: 200px;
 }
 
+.mycompany{
+ margin-left:30rpx;
+ margin-bottom: 10rpx;
+}
 .company {
     margin-top: 10rpx;
     width: 80%;
     height: 60rpx;
     /*border: 1rpx solid red;*/
     margin-left: 50rpx;
+    margin-bottom: 145rpx;
 }
+.win{
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom:0%;
+  height: 140rpx;
+  width: 100%;
+  align-items:center;
+  text-align:center;
+  background-color:	gainsboro;
+}
+
+.create2{
+  display: flex;
+  justify-content: center;  /*左右具中*/
+  align-items: center;      /*上下具中*/
+  width: 40%;
+  height: 60rpx;
+  background-color: red;
+}
+
+.join2 {
+  display: flex;
+  justify-content: center;  /*左右具中*/
+  align-items: center;      /*上下具中*/
+  width: 40%;
+  height: 60rpx;
+}
+
+.create{
+    width: 80%;
+    height: 80rpx;
+    flex-direction: column;
+    border: 2rpx lawngreen solid;
+    margin-top: 30rpx;
+    align-items: center;
+}
+
+.join{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 80rpx;
+    margin-top: 30rpx;
+    align-items: center;
+    border: 2rpx solid lawngreen;
+}
+
 .companyshow
 {
   display: flex;

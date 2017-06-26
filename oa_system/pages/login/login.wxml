@@ -14,17 +14,32 @@
     <!--
     <text>加入的企业:</text>
     -->
+    <view class="companyshow" >
+        <text> 我的企业</text>
+        <image class="GoIcon" src="/images/icons/go.png" mode="aspectFit"></image>
+    </view>
     <view wx:for="{{companys}}">
       <view class="companyshow">
-      <text>{{item.Name}} </text>
-      <image class="GoIcon" src="/images/icons/go.png" mode="aspectFit"></image>
+        <text>{{item.Name}} </text>
+        <!--
+        <image class="GoIcon" src="/images/icons/go.png" mode="aspectFit"></image>
+        -->
       </view>
-      <button id="{{item.Id}}" class="enter"  bindtap="into"> 进入 </button>
+      <button id="{{item.Id}}" class="enter" bindtap="into"> 进入 </button>
     </view>
+
   </view>
-  <!--
   <view wx:else>
-    <text>开始创建企业</text>
+    <button class="create" bindtap="handleCreateBtn">创建企业</button>
+    <button class="join" bindtap="handleJoinBtn">加入企业</button>
   </view>
-  -->
+</view>
+
+
+<view wx:if="{{has == true}}">
+    <!--float win -->
+    <view class="win">
+      <button class="create2" type="primary" bindtap="handleCreateBtn">创建企业</button>
+      <button class="join2" type="primary" bindtap="handleJoinBtn">加入企业</button>
+    </view>
 </view>
