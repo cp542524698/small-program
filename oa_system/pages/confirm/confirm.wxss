@@ -2,6 +2,8 @@
   background-color: rgba(200, 200, 200, 0.4);
   display: flex;
   flex-direction: column;
+  height: 760rpx;
+  width: 100%;
 }
 
 .vWall text {
@@ -13,7 +15,6 @@
 }
 
 .vLocation {
-  margin-top: 10rpx;
   display: flex;
   justify-content: center;
 }
@@ -32,8 +33,10 @@
 
 
 .checkBtn {
-  width: 85%;
-  margin-top: 108rpx;
+  width: 80%;
+  height: 120rpx;
+  justify-content: center;
+  /*margin-top: 108rpx;*/
   background-color: #22a1e0;
   color: #fff;
 }

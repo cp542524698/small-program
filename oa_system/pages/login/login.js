@@ -105,7 +105,7 @@ Page({
             }
         })
         console.log(title)
-        title = 2
+        //title = 2
         if (title == 0) {  //创始人 或管理员
             wx.switchTab({ url: '/pages/boss/boss' })
         } else if (title == 1) {
