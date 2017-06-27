@@ -32,9 +32,45 @@
 }
 
 
+
+.win{
+  display: flex;
+  flex-direction: row;
+  
+  bottom:0%;
+  height: 140rpx;
+  width: 100%;
+  align-items:center;
+  text-align:center;
+  background-color:	gainsboro;
+}
+
+.ad{
+  display: flex;
+  justify-content: center;  /*左右具中*/
+  align-items: center;      /*上下具中*/
+  height: 60rpx;
+  position: fixed;
+  margin-bottom: 60%;
+  margin-left: 40%;
+  background-color: red;
+}
+
+.name {
+  display: flex;
+  justify-content: center;  /*左右具中*/
+  align-items: center;      /*上下具中*/
+  position: fixed;
+  margin-bottom: 40%;
+  color: red;
+  margin-left: 40%
+}
 .checkBtn {
   width: 80%;
-  height: 120rpx;
+  height: 60rpx;
+  position: fixed;
+  margin-top: 85%;
+  margin-left: 10%;
   justify-content: center;
   /*margin-top: 108rpx;*/
   background-color: #22a1e0;
