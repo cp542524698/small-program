@@ -45,11 +45,13 @@
 
 .nickname {
   height: 50rpx;
+  width: 360rpx;
   margin-top: 55rpx;
   font-size: 40rpx;
   font-weight: bold;
-  margin-left: 60rpx;
+  margin-left: 20rpx;
   color: red;
+  /*border: red solid 1rpx;*/
 }
 
 .button {
@@ -68,8 +70,8 @@
 .button2 {
     width: 200rpx;
     height: 70rpx;
-    margin-left: 200rpx;
-    margin-top: 60rpx;
+    margin-left: 0rpx;
+    margin-top: 40rpx;
 	/*border: solid 2px #22a1e0;*/
     border-radius: 10px;
     text-align: center;
