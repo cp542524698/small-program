@@ -35,7 +35,10 @@
 <template name="workers">
   <view wx:for="{{item}}" wx:for-item="value" wx:for-index="key">
     <view wx:if="{{value.Title == 0}}">
+      <!--
       <view class="userinfo" bindtap="review">
+      -->
+      <view class="userinfo">
         <image class="userinfo-avatar" src="{{value.Imgurl}}"></image>
         <text class="nickname">{{value.Nickname}}</text>
         <text class="button2" > 企业创建者  </text>

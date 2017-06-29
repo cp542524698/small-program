@@ -15,7 +15,8 @@
     "pages/self/self",
     "pages/applylist/applylist",
     "pages/unAuth/unAuth",
-    "pages/workers2/workers2"
+    "pages/workers2/workers2",
+    "pages/detail/detail"
   ],
   "window":{
     "backgroundTextStyle":"light",

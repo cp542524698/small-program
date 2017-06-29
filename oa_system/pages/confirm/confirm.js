@@ -128,7 +128,7 @@ Page({
             url: Api.joinCompany,
             data: {
               token: this.data.token,
-              companyId: company.Id,
+              companyId: this.data.company.Id,
             },
             method: 'POST',
             header: {
