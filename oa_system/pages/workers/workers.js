@@ -6,7 +6,8 @@ Page({
   },
   onLoad: function (options) {
     this.setData({
-      token: wx.getStorageSync('token')
+      token: wx.getStorageSync('token'),
+      company: wx.getStorageSync('company')
     })
 
     // wx.request({
@@ -104,7 +105,8 @@ Page({
     wx.request({
       url: Api.staffsList,
       data: {
-        token: this.data.token
+        token: this.data.token,
+        companyid: this.data.company.Id
       },
       method: 'GET',
       header: {

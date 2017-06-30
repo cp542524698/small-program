@@ -95,7 +95,6 @@ Page({
                             console.error('setStorage token failed')
                         }
                     })
-
                 } else {
                     console.log("获取company信息错误")
                 }
