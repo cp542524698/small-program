@@ -83,6 +83,21 @@ function Distance(dst_lat, dst_long, lat2, lng2, accuracy){
    return int_distance
 }
 
+function monthDay(n) {
+    var date = new Date()
+    var year = date.getFullYear()
+    var month = date.getMonth() + 1
+    var day = date.getDate()
+    
+    if(n == -1){//返回当前天
+        return [year, month, day].map(formatNumber).join('-') 
+    }
+
+    if(n > 0){
+        day = n
+        return [year, month, day].map(formatNumber).join('-')     
+    }
+}
 
 function formatNumber(n) {
   n = n.toString()
@@ -93,4 +108,5 @@ module.exports = {
   formatTime: formatTime,
   IsLate: IsLate,
   Distance: Distance,
+  monthDay: monthDay,
 }

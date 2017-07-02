@@ -16,6 +16,7 @@ var getrelation = host + 'getrelation';
 var commit = host + 'commit';
 var gettime = host + 'gettime';
 var delstaff = host + 'delstaff';
+var detail = host + 'detail';
 
 
 var deleteCompany = host + 'company/now?token=';
@@ -49,6 +50,7 @@ module.exports = {
     commit: commit,
     gettime: gettime,
     delstaff: delstaff,
+    detail: detail,
 }
 
 //58b42745679e8155e0a771de

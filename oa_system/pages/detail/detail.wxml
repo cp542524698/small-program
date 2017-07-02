@@ -1,27 +1,54 @@
 <view class="all">
-  <view wx:for="{{carts}}" wx:for-index="cindex" wx:for-item="cart">
-    <text style="margin: 20rpx;background:#d0d0d0	"> 订单号:{{cart.Id}} </text>
-    <view wx:for="{{cart.Detail}}" wx:for-index="dindex" wx:for-item="good">
-
-      <view class="detail">
-        <image class="userinfo-avatar" src="{{good.id}}" background-size="cover"> </image>
-        <text style="margin-left: 200rpx; font-size: 30rpx"> {{good.name}}</text>
-        <view>
-          <text style="margin-left: 200rpx; font-size: 30rpx"> 单价:{{good.price}} </text>
+  <view wx:for="{{records}}">
+    <text style="margin: 20rpx;background:#d0d0d0; font-size: 36rpx"> 时间:{{item[0]._time}} </text>
+    <view wx:for="{{item[1]}}" wx:for-item="_info">
+        <view wx:if="{{_info.Whichtime==0}}">
+          <view wx:if="{{_info.Late==1}}">
+          <text style="margin-left: 80rpx; margin-bottom:20rpx; font-size: 25rpx; color:red"> 上午上班:{{_info.Worktime}} </text>
+          <text style="margin-left: 40rpx; margin-bottom:20rpx; font-size: 25rpx; color:red"> 距离签到点:{{_info.Distance}} 米</text>
+          </view>
+          <view wx:else>
+          <text style="margin-left: 80rpx; margin-bottom:20rpx; font-size: 25rpx;"> 上午上班:{{_info.Worktime}} </text>
+          <text style="margin-left: 40rpx; margin-bottom:20rpx; font-size: 25rpx;"> 距离签到点:{{_info.Distance}} 米</text>
+          </view>
         </view>
+        <view wx:if="{{_info.Whichtime==2}}">
+          <view wx:if="{{_info.Late==1}}">
+          <text style="margin-left: 80rpx; margin-bottom:20rpx; font-size: 25rpx; color:red"> 上午上班:{{_info.Worktime}} </text>
+          <text style="margin-left: 40rpx; margin-bottom:20rpx; font-size: 25rpx; color:red"> 距离签到点:{{_info.Distance}} 米</text>
+          </view>
+          <view wx:else>
+          <text style="margin-left: 80rpx; margin-bottom:20rpx; font-size: 25rpx;"> 上午下班:{{_info.Worktime}} </text>
+          <text style="margin-left: 40rpx; margin-bottom:20rpx; font-size: 25rpx;"> 距离签到点:{{_info.Distance}} 米</text>
+          </view>
+        </view>
+        <view wx:if="{{_info.Whichtime==1}}">
+          <view wx:if="{{_info.Late==1}}">
+          <text style="margin-left: 80rpx; margin-bottom:20rpx; font-size: 25rpx; color:red"> 上午上班:{{_info.Worktime}} </text>
+          <text style="margin-left: 40rpx; margin-bottom:20rpx; font-size: 25rpx; color:red"> 距离签到点:{{_info.Distance}} 米</text>
+          </view>
+          <view wx:else>
+          <text style="margin-left: 80rpx; margin-bottom:20rpx; font-size: 25rpx;"> 下午上班:{{_info.Worktime}} </text>
+          <text style="margin-left: 40rpx; margin-bottom:20rpx; font-size: 25rpx;"> 距离签到点:{{_info.Distance}} 米</text>
+          </view>
+        </view>
+        <view wx:if="{{_info.Whichtime==3}}">
+          <view wx:if="{{_info.Late==1}}">
+          <text style="margin-left: 80rpx; margin-bottom:20rpx; font-size: 25rpx; color:red"> 上午上班:{{_info.Worktime}} </text>
+          <text style="margin-left: 40rpx; margin-bottom:20rpx; font-size: 25rpx; color:red"> 距离签到点:{{_info.Distance}} 米</text>
+          </view>
+          <view wx:else>
+          <text style="margin-left: 80rpx; margin-bottom:20rpx; font-size: 25rpx;"> 下午下班:{{_info.Worktime}} </text>
+          <text style="margin-left: 40rpx; margin-bottom:20rpx; font-size: 25rpx;"> 距离签到点:{{_info.Distance}} 米</text>
+          </view>
+        </view>
+
       </view>
-    
-    </view>
-    <view>
-    <text style="margin-left: 630rpx; font-size: 28rpx">总价:{{cart.Total}}</text>
-    </view>
-    <view>
-    <text style="margin-left: 20rpx;font-size: 25rpx">收货信息:{{cart.Info.name}} 手机号: {{cart.Info.tel}}</text>
-    </view>
-    <text style="margin-left: 20rpx; margin-bottom:20rpx; font-size: 25rpx;"> 收货地址:{{cart.Info.address}} </text>
   </view>
 </view>
 
+<!--
 <toast hidden="{{hiddenToast}}" duration="1000" bindchange="bindToastChange">
-    {{toastStr}}
+  {{toastStr}}
 </toast>
+-->
