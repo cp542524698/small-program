@@ -24,10 +24,22 @@ bindregionchange="regionchange" controls="{{controls}}">
     <!--
     <text class="ad">{{company.Address}}</text>
     -->
-    <text class="name" >{{company.Name}}</text>
+    <text class="name" style="color:red;">{{company.Name}}</text>
   <button class="checkBtn" bindtap="checkBtn_click" disabled="{{!checkButton}}">
     {{checkButton == true ? '申请加入' : '不能重复申请'}}
   </button>
 </view>
 
+<view class="{{showView2?'hide':'show'}}" >
+    <form bindsubmit="commit">
+    <view class="manage">
+        <text>备注姓名:</text>
+        <input name="name" placeholder="{{name}}"></input>
+        <text style="margin-left: 140rpx" type="primary" bindtap="exit_commit"> × </text>
+    </view>
 
+    <view class="manage">
+        <button class="butt"  formType="submit">确认加入</button>
+    </view>
+    </form>
+</view>

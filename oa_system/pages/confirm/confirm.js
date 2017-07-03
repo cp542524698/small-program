@@ -4,8 +4,10 @@ Page({
   data: {
     company:null,
     checkButton: true,
+    showView2: true,
     winWidth: '',
     winHeight: '',
+    name: '_________________________',
   },
 
   onLoad: function (options) {
@@ -109,12 +111,62 @@ Page({
       },
     })
   },
+  exit_commit: function(e){
+      var that= this
+      that.setData({
+          showView2: true,
+      }) 
+  },
 
+  commit: function(event){
+    var that = this
+    console.log("commit info: ", event)
+    var name = that.data.name
+    if(name.indexOf("_____") >= 0){
+        wx.showToast({
+            title: '请备注姓名',
+            icon: 'success',
+            duration: 2000
+        })
+        return 
+       
+    }else{
+        name = event.detail.value.name;
+    }
+    console.log("name:", name)
+    wx.request({
+        url: Api.joinCompany,
+        data: {
+            token: that.data.token,
+            companyId: that.data.company.Id,
+            username: name,
+        },
+        method: 'POST',
+        header: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        success: (res) => {
+            console.log(res)
+            wx.redirectTo({
+                url: '/pages/audit/audit?companyName=' + this.data.company.Name + '&message=已发送发送申请消息'
+            })
+        }
+    })
+
+  },
   checkBtn_click: function (event) {
+    var that = this
+    /*
     console.log("company id:", this.data.id)
     var message = "您已申请加入 " + this.data.company.Name
     var companyid = this.data.id
     var content = "确定加入"+ this.data.company.Name +"吗？"
+    */
+    that.setData({
+        showView2: false,
+    })   
+
+    /*
     wx.showModal({
       title: '申请加入',
       content: content,
@@ -143,7 +195,7 @@ Page({
           })
         }
       }
-    })
+    })*/
 
   }
 

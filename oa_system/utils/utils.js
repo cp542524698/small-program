@@ -36,7 +36,7 @@ function IsLate(date, worktime){
     var _hour = parseInt(strs[0])
     var _minute = parseInt(strs[1])
     var strtime = [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-    if(_hour >= hour && _minute >= minute){
+    if((_hour == hour && _minute >= minute) || (_hour > hour) ){
         return [false, strtime]
     }else{
         return [true, strtime]
