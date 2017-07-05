@@ -15,7 +15,8 @@ Page({
     // 获取系统信息
     this.setData({
       id: options.companyId,
-      token: wx.getStorageSync('token')
+      token: wx.getStorageSync('token'),
+      userid: wx.getStorageSync("userid")
     })
 
   },
@@ -121,7 +122,7 @@ Page({
   commit: function(event){
     var that = this
     console.log("commit info: ", event)
-    var name = that.data.name
+    var name = event.detail.value.name;
     if(name.indexOf("_____") >= 0){
         wx.showToast({
             title: '请备注姓名',
@@ -129,9 +130,6 @@ Page({
             duration: 2000
         })
         return 
-       
-    }else{
-        name = event.detail.value.name;
     }
     console.log("name:", name)
     wx.request({
@@ -139,6 +137,7 @@ Page({
         data: {
             token: that.data.token,
             companyId: that.data.company.Id,
+            userid: that.data.userid,
             username: name,
         },
         method: 'POST',

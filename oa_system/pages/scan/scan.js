@@ -166,6 +166,14 @@ Page({
             console.log("whichtime error")
         }
 
+        /*绑定设备*/
+        var phonemodel = null
+        wx.getSystemInfo({
+            success: function(res) {
+                phonemodel = res.model
+            },
+        })
+        console.log("phone_model:", phonemodel)
         if (exist == true){
             wx.showModal({
                 title: '温馨提示',
@@ -182,6 +190,7 @@ Page({
                                 late: that.data.late,
                                 distance: that.data.distance,
                                 whichtime: that.data.whichtime,
+                                phone: phonemodel,
                             },
                             method: "POST",
                             header: {
@@ -243,6 +252,7 @@ Page({
                     late: that.data.late,
                     distance: that.data.distance,
                     whichtime: that.data.whichtime,
+                    phone: phonemodel,
                 },
                 method: "POST",
                 header: {
