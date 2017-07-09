@@ -19,17 +19,17 @@
 <view class="vWall">
     <map id="map4select" longitude="{{company.Longitude}}" latitude="{{company.Latitude}}" markers="{{markers}}" scale="20" style="width:{{map_width}}px;height:{{map_height}}px"
 bindregionchange="regionchange" controls="{{controls}}">
-
     </map>
     <!--
     <text class="ad">{{company.Address}}</text>
-    -->
     <text class="name" style="color:red;">{{company.Name}}</text>
   <button class="checkBtn" bindtap="checkBtn_click" disabled="{{!checkButton}}">
     {{checkButton == true ? '申请加入' : '不能重复申请'}}
   </button>
+  -->
 </view>
 
+<!--
 <view class="{{showView2?'hide':'show'}}" >
     <form bindsubmit="commit">
     <view class="manage">
@@ -43,3 +43,5 @@ bindregionchange="regionchange" controls="{{controls}}">
     </view>
     </form>
 </view>
+
+-->

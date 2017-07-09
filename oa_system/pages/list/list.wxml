@@ -1,10 +1,29 @@
 <import src="../../template/company-item.wxml" />
 <view class="vFull-page" style="width: {{winWidth}}px; height: {{winHeight}}px">
+  <!--
   <view class="vLabel">
-    <text>请选择要加入的公司</text>
+    <text style="color:black;">企业列表：</text>
   </view>
   <view class="vLine"></view>
+  -->
+  <!--
   <view class="vCompanylist" wx:for="{{lists}}" bindtap="item_click" data-companyid="{{item.Id}}">
+  -->
+  <view class="vCompanylist" wx:for="{{lists}}" >
     <template is="company-item" data="{{item}}"></template>
   </view>
+</view>
+
+<view class="{{showView2?'hide':'show'}}" >
+    <form bindsubmit="commit">
+    <view class="manage">
+        <text>备注姓名:</text>
+        <input name="name" placeholder="{{name}}"></input>
+        <text style="margin-left: 100rpx" type="primary" bindtap="exit_commit"> × </text>
+    </view>
+
+    <view class="manage">
+        <button class="butt"  formType="submit">确认加入</button>
+    </view>
+    </form>
 </view>

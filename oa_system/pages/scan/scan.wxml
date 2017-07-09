@@ -1,3 +1,6 @@
+<view class="header">
+    <text>账号与硬件已进行绑定,请勿更换设备</text>
+</view>
 <view class="manage">
   <view>
     <text class="word">当前时间: {{now}}</text>

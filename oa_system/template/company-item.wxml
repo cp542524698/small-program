@@ -1,5 +1,14 @@
 <template name="company-item">
-    <view class="companyName"><text>{{item.Name}}</text></view>
+    <view class="companyName">
+        <view class="companyDetail">
+            <view class="companyname">{{item.Name}}</view>
+            <view class="companyAddress">{{item.Address}} </view>
+        </view>
+        <view class="action">
+        <button class="detail" bindtap="detail" data-id="{{item.Id}}" data-lon="{{item.Longitude}}" data-lat="{{item.Latitude}}" data-name="{{item.Name}}" data-add="{{item.Address}}">联系我们</button>
+        <button class="join" bindtap="join" data-id="{{item.Id}}" data-name="{{item.Name}}">加入企业</button>
+        </view>
+    </view>
 </template>
 
 

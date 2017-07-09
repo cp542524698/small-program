@@ -1,4 +1,13 @@
 /* pages/scan/scan.wxss */
+.header {
+    display: flex;
+    justify-content: center;  /*左右具中*/
+    align-items: center;      /*上下具中*/
+    height: 80rpx;
+    background: #eee;
+    line-height: 1.2em;
+    font-size: 14px;
+}
 .manage{
   display: flex; 
   justify-content: flex-start; 
