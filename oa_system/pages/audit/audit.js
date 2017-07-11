@@ -21,4 +21,19 @@ Page({
       }
     });
   },
+
+  onUnload: function () {
+      // 页面关闭
+      //进行对token， userid的缓存进行清除
+      try{
+        wx.removeStorageSync('token')
+      }catch(e){
+        console.log("removeSync error")
+      }
+      try{
+        wx.removeStorageSync('userid')
+      }catch(e){
+          console.log("removeSync error")
+      }
+  },
 })

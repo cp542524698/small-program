@@ -20,7 +20,7 @@ Page({
         console.log("userid:", that.data.userid)
         console.log("companyid:", that.data.companyid)
         console.log("token:", that.data.token)
-        
+
         wx.request({
             url: Api.detail,
             data: {
@@ -29,41 +29,43 @@ Page({
                 token: that.data.token,
             },
             method: 'GET',
-            header:{
-                "Content-Type":"application/x-www-form-urlencoded"
+            header: {
+                "Content-Type": "application/x-www-form-urlencoded"
             },
-            success:(res)=>{
+            success: (res) => {
                 console.log("detail onLoad: ", res)
-                var contents= []
-                var newMap= new Map()
+                var contents = []
+                var newMap = new Map()
                 var dayinfo = []
-                
-                if(res.data.Code == 200){
+
+                if (res.data.Code == 200) {
                     var date = new Date()
                     var today = date.getDate()
                     console.log(today)
-                    for(var j=1; j<=today; j++){
+                    for (var j = 1; j <= today; j++) {
                         var now = util.monthDay(j)
                         console.log("time for: ", now)
-                        var _time = {"_time": now}
-                        for(var i=0; i<res.data.data.length; i++){
-                           if(res.data.data[i].Worktime.indexOf(now) >= 0){
-                               console.log("----------------")
-                               dayinfo.push(res.data.data[i])
-                               
-                               /*
-                                if ( newMap.has(now)){
-                                    console.log("has key:", newMap[now])
-                                    console.log(newMap[now])
+                        var _time = { "_time": now }
+                        if (res.data.data != null) {
+                            for (var i = 0; i < res.data.data.length; i++) {
+                                if (res.data.data[i].Worktime.indexOf(now) >= 0) {
+                                    console.log("----------------")
                                     dayinfo.push(res.data.data[i])
-                                    newMap.set(now, dayinfo)
-                                }else{
-                                    console.log("-----first")
-                                    dayinfo.push(res.data.data[i])
-                                    newMap.set(now,dayinfo)
-                                    console.log(newMap)
-                                }*/
-                           }
+
+                                    /*
+                                     if ( newMap.has(now)){
+                                         console.log("has key:", newMap[now])
+                                         console.log(newMap[now])
+                                         dayinfo.push(res.data.data[i])
+                                         newMap.set(now, dayinfo)
+                                     }else{
+                                         console.log("-----first")
+                                         dayinfo.push(res.data.data[i])
+                                         newMap.set(now,dayinfo)
+                                         console.log(newMap)
+                                     }*/
+                                }
+                            }
                         }
                         /*
                         if ( newMap[now] != "empty"){
@@ -73,7 +75,7 @@ Page({
                         newMap.clear()
                         */
                         console.log("dayinfo: ", dayinfo, " now:", now)
-                        if (dayinfo.length > 0){
+                        if (dayinfo.length > 0) {
                             var newarray = []
                             newarray.push(_time, dayinfo)
                             //newMap.set(_time, dayinfo)
@@ -90,7 +92,7 @@ Page({
                     })
                 }
             },
-            fail: function(fail){
+            fail: function (fail) {
                 console.log(fail)
             },
         })
