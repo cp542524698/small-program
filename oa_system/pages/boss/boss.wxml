@@ -1,10 +1,12 @@
 <!--pages/boss/boss.wxml-->
 
 <view class="boss">
+  <!--
   <view class="header">
     <text>公司名和公司真实地址需要同步才能生成贵公司唯一的二维码供打卡使用。</text>
   </view>
-
+  -->
+  <view class="low"></view>
   <view class="company">
     <view class="company-name" bindtap="toCompanyName">
       <text>公司</text>

@@ -23,7 +23,7 @@ var deleteCompany = host + 'company/now?token=';
 var worktime = host + 'company/information?token=' //用于获取该公司上班时间
 var staffAttdance = host + 'company/staffs/day?token='
 
-var qrcode = host + 'qrcode/get?token='
+var qrcode = host + 'oa/qrcode.png'
 
 var tofree = host + 'user/tofree?token='
 

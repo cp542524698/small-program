@@ -19,8 +19,12 @@
         <image class="GoIcon" src="/images/icons/go.png" mode="aspectFit"></image>
     </view>
     <view wx:for="{{companys}}">
+      
       <view class="companyshow">
+        
+        <view class="p1">
         <text>{{item.Name}} </text>
+        </view>
         <!--
         <image class="GoIcon" src="/images/icons/go.png" mode="aspectFit"></image>
         -->

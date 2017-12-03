@@ -233,6 +233,11 @@ Page({
 
   //生产二维码
   getQRCode: function () {
+    wx.navigateTo({
+        url:'/pages/qrcode/qrcode?QRCodeUrl=' + Api.qrcode +
+        '&name=' + this.data.company.Name + '&address=' + this.data.company.Address,
+    })
+    /*
     wx.request({
       url: Api.qrcode + this.data.token,
       data: {},
@@ -245,6 +250,7 @@ Page({
         })
       }
     })
+    */
   },
 
   //申请列表

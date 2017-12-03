@@ -3,6 +3,7 @@ Page({
   data:{},
   onLoad:function(options){
     // 页面初始化 options为页面跳转所带来的参数
+    console.log(options)
     this.setData({
       codeUrl : options.QRCodeUrl,
       name: options.name,
@@ -23,5 +24,14 @@ Page({
   },
   bindLoadCode: function(event) {
     console.log(event)
+  },
+
+  //设置分享
+  onShareAppMessage: function () {
+      return {
+          title: name,
+          desc: address,
+          path: '/login/login'
+      }
   }
 })
